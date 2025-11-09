@@ -1296,121 +1296,124 @@
         </div>
     </section>
 
-    <!-- Booking Section -->
-    <section id="booking" style="background-color: var(--light);">
-        <div class="container">
-            <div class="section-title">
-                <h2>Book a Tutor</h2>
-            </div>
-            <div class="booking-container">
-                <div class="booking-form">
-                    <form id="smartBookingForm">
-                        <div class="form-group">
-                            <label for="fullName">Full Name *</label>
-                            <input type="text" id="fullName" name="fullName" required>
-                        </div>
+ <!-- Booking Section -->
+<section id="booking" style="background-color: var(--light);">
+    <div class="container">
+        <div class="section-title">
+            <h2>Book a Tutor</h2>
+        </div>
+        <div class="booking-container">
+            <div class="booking-form">
+                <form name="tutor-booking" method="POST" data-netlify="true" id="smartBookingForm">
+                    <input type="hidden" name="form-name" value="tutor-booking">
+                    
+                    <div class="form-group">
+                        <label for="fullName">Full Name *</label>
+                        <input type="text" id="fullName" name="fullName" required>
+                    </div>
 
-                        <div class="form-group">
-                            <label for="email">Email Address *</label>
-                            <input type="email" id="email" name="email" required>
-                        </div>
+                    <div class="form-group">
+                        <label for="email">Email Address *</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
 
-                        <div class="form-group">
-                            <label for="phone">Phone Number *</label>
-                            <input type="tel" id="phone" name="phone" required>
-                        </div>
+                    <div class="form-group">
+                        <label for="phone">Phone Number *</label>
+                        <input type="tel" id="phone" name="phone" required>
+                    </div>
 
-                        <div class="form-group">
-                            <label for="department">Department *</label>
-                            <input type="text" id="department" name="department" required>
-                        </div>
+                    <div class="form-group">
+                        <label for="department">Department *</label>
+                        <input type="text" id="department" name="department" required>
+                    </div>
 
-                        <div class="form-group">
-                            <label for="level">Level *</label>
-                            <select id="level" name="level" required onchange="updateCourses()">
-                                <option value="">Select Your Level</option>
-                                <option value="100">100 Level</option>
-                                <option value="200">200 Level</option>
-                                <option value="300">300 Level</option>
-                                <option value="400">400 Level</option>
-                                <option value="500">500 Level</option>
-                            </select>
-                        </div>
+                    <div class="form-group">
+                        <label for="level">Level *</label>
+                        <select id="level" name="level" required onchange="updateCourses()">
+                            <option value="">Select Your Level</option>
+                            <option value="100">100 Level</option>
+                            <option value="200">200 Level</option>
+                            <option value="300">300 Level</option>
+                            <option value="400">400 Level</option>
+                            <option value="500">500 Level</option>
+                        </select>
+                    </div>
 
-                        <div class="form-group">
-                            <label for="course">Course Needed *</label>
-                            <select id="course" name="course" required onchange="updateTutors()">
-                                <option value="">Select Course</option>
-                                <!-- Courses will be populated dynamically -->
-                            </select>
-                        </div>
+                    <div class="form-group">
+                        <label for="course">Course Needed *</label>
+                        <select id="course" name="course" required onchange="updateTutors()">
+                            <option value="">Select Course</option>
+                            <!-- Courses will be populated dynamically -->
+                        </select>
+                    </div>
 
-                        <div class="form-group">
-                            <label for="tutor">Preferred Tutor</label>
-                            <select id="tutor" name="tutor">
-                                <option value="">Any Available Tutor</option>
-                                <!-- Tutors will be populated dynamically -->
-                            </select>
-                        </div>
+                    <div class="form-group">
+                        <label for="tutor">Preferred Tutor</label>
+                        <select id="tutor" name="tutor">
+                            <option value="">Any Available Tutor</option>
+                            <!-- Tutors will be populated dynamically -->
+                        </select>
+                    </div>
 
-                        <div class="form-group">
-                            <label>Preferred Contact Method *</label>
-                            <div class="contact-preferences">
-                                <label class="contact-option">
-                                    <input type="checkbox" name="contactMethod" value="whatsapp">
-                                    <i class="fab fa-whatsapp"></i>
-                                    <span>WhatsApp</span>
-                                </label>
-                                <label class="contact-option">
-                                    <input type="checkbox" name="contactMethod" value="email">
-                                    <i class="fas fa-envelope"></i>
-                                    <span>Email</span>
-                                </label>
-                                <label class="contact-option">
-                                    <input type="checkbox" name="contactMethod" value="phone">
-                                    <i class="fas fa-phone"></i>
-                                    <span>Phone Call</span>
-                                </label>
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="message">Additional Message (Optional)</label>
-                            <textarea id="message" name="message" rows="4" placeholder="Any specific topics you need help with? Preferred time for tutoring sessions?"></textarea>
-                        </div>
-
-                        <button type="submit" class="btn" style="width: 100%;">Submit Booking Request</button>
-                    </form>
-
-                    <!-- Confirmation Message -->
-                    <div class="confirmation-message" id="confirmationMessage">
-                        <h4><i class="fas fa-check-circle" style="color: var(--success);"></i> Booking Request Received!</h4>
-                        <p>We've received your booking request for <strong id="confirmedCourse"></strong>. We'll contact you within 24 hours via your preferred method.</p>
-                        <div class="whatsapp-info">
-                            <i class="fab fa-whatsapp"></i>
-                            <span>For urgent inquiries: <strong>+2347038248528</strong></span>
+                    <div class="form-group">
+                        <label>Preferred Contact Method *</label>
+                        <div class="contact-preferences">
+                            <label class="contact-option">
+                                <input type="checkbox" name="contactMethod" value="whatsapp">
+                                <i class="fab fa-whatsapp"></i>
+                                <span>WhatsApp</span>
+                            </label>
+                            <label class="contact-option">
+                                <input type="checkbox" name="contactMethod" value="email">
+                                <i class="fas fa-envelope"></i>
+                                <span>Email</span>
+                            </label>
+                            <label class="contact-option">
+                                <input type="checkbox" name="contactMethod" value="phone">
+                                <i class="fas fa-phone"></i>
+                                <span>Phone Call</span>
+                            </label>
                         </div>
                     </div>
-                </div>
 
-                <div class="booking-info">
-                    <i class="fas fa-calendar-check"></i>
-                    <h3>How It Works</h3>
-                    <p>1. Fill out the booking form with your details</p>
-                    <p>2. Select your level → See relevant courses</p>
-                    <p>3. Choose course → See available tutors</p>
-                    <p>4. Select preferred tutor (optional)</p>
-                    <p>5. Choose contact method</p>
-                    <p>6. Submit your request</p>
-                    <p>7. Get instant confirmation</p>
+                    <div class="form-group">
+                        <label for="message">Additional Message (Optional)</label>
+                        <textarea id="message" name="message" rows="4" placeholder="Any specific topics you need help with? Preferred time for tutoring sessions?"></textarea>
+                    </div>
 
-                    <button onclick="sendWhatsAppMessage()" class="btn" style="background-color: #25D366; margin-top: 20px; width: 100%;">
-                        <i class="fab fa-whatsapp"></i> Message on WhatsApp
-                    </button>
+                    <button type="submit" class="btn" style="width: 100%;">Submit Booking Request</button>
+                </form>
+
+                <!-- Confirmation Message -->
+                <div class="confirmation-message" id="confirmationMessage">
+                    <h4><i class="fas fa-check-circle" style="color: var(--success);"></i> Booking Request Received!</h4>
+                    <p>We've received your booking request for <strong id="confirmedCourse"></strong>. We'll contact you within 24 hours via your preferred method.</p>
+                    <div class="whatsapp-info">
+                        <i class="fab fa-whatsapp"></i>
+                        <span>For urgent inquiries: <strong>+2347038248528</strong></span>
+                    </div>
                 </div>
             </div>
+
+            <div class="booking-info">
+                <i class="fas fa-calendar-check"></i>
+                <h3>How It Works</h3>
+                <p>1. Fill out the booking form with your details</p>
+                <p>2. Select your level → See relevant courses</p>
+                <p>3. Choose course → See available tutors</p>
+                <p>4. Select preferred tutor (optional)</p>
+                <p>5. Choose contact method</p>
+                <p>6. Submit your request</p>
+                <p>7. Get instant confirmation</p>
+                
+             <!-- Whatsapp sending message-->
+                <button onclick="sendWhatsAppMessage()" class="btn" style="background-color: #25D366; margin-top: 20px; width: 100%;">
+                    <i class="fab fa-whatsapp"></i> Message on WhatsApp
+                </button>
+            </div>
         </div>
-    </section>
+    </div>
+</section>
 
     <!-- Footer -->
     <footer>
@@ -1561,51 +1564,30 @@
             }
         }
 
-        // Form submission with email
-        document.getElementById('smartBookingForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            const formData = new FormData(this);
-            const course = document.getElementById('course').options[document.getElementById('course').selectedIndex].text;
-            
-            // Prepare email content
-            const subject = `New Tutor Booking - ${course}`;
-            const body = `
-New booking request from Genius Point Academy:
-
-Name: ${formData.get('fullName')}
-Email: ${formData.get('email')}
-Phone: ${formData.get('phone')}
-Department: ${formData.get('department')}
-Level: ${formData.get('level')}
-Course: ${course}
-Preferred Tutor: ${formData.get('tutor') || 'Any available'}
-Contact Method: ${Array.from(formData.getAll('contactMethod')).join(', ')}
-Message: ${formData.get('message') || 'No additional message'}
-
-Received: ${new Date().toLocaleString()}
-            `.trim();
-            
-            // Send email using mailto (fallback)
-            const mailtoLink = `mailto:academygeniuspoint@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-            window.location.href = mailtoLink;
-            
-            // Show confirmation
-            document.getElementById('confirmedCourse').textContent = course;
-            document.getElementById('confirmationMessage').classList.add('show');
-            
-            // Reset form after delay
-            setTimeout(() => {
-                this.reset();
-                document.querySelectorAll('.contact-option').forEach(option => {
-                    option.classList.remove('selected');
-                });
-                // Reset dynamic selects
-                document.getElementById('course').innerHTML = '<option value="">Select Course</option>';
-                document.getElementById('tutor').innerHTML = '<option value="">Any Available Tutor</option>';
-            }, 5000);
+       // Form submission for Netlify
+document.getElementById('smartBookingForm').addEventListener('submit', function(e) {
+    // Let Netlify handle the submission
+    const course = document.getElementById('course').options[document.getElementById('course').selectedIndex].text;
+    
+    // Show confirmation immediately
+    document.getElementById('confirmedCourse').textContent = course;
+    document.getElementById('confirmationMessage').classList.add('show');
+    
+    // Reset form after delay
+    setTimeout(() => {
+        this.reset();
+        document.querySelectorAll('.contact-option').forEach(option => {
+            option.classList.remove('selected');
         });
-
+        // Reset dynamic selects
+        document.getElementById('course').innerHTML = '<option value="">Select Course</option>';
+        document.getElementById('tutor').innerHTML = '<option value="">Any Available Tutor</option>';
+        // Hide confirmation after 10 seconds
+        setTimeout(() => {
+            document.getElementById('confirmationMessage').classList.remove('show');
+        }, 10000);
+    }, 3000);
+});
         // Contact option selection
         document.querySelectorAll('.contact-option').forEach(option => {
             option.addEventListener('click', function() {
