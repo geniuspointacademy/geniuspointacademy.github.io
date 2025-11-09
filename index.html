@@ -1296,66 +1296,121 @@
         </div>
     </section>
 
-   <!-- Booking Section -->
+ <!-- Booking Section -->
 <section id="booking" style="background-color: var(--light);">
     <div class="container">
         <div class="section-title">
             <h2>Book a Tutor</h2>
         </div>
         <div class="booking-container">
-            <div class="booking-form" style="text-align: center; padding: 50px 30px;">
-                <div style="margin-bottom: 30px;">
-                    <i class="fas fa-calendar-check" style="font-size: 4rem; color: var(--primary); margin-bottom: 20px;"></i>
-                    <h3 style="color: var(--primary); margin-bottom: 15px;">Ready to Book Your Tutor?</h3>
-                    <p style="font-size: 1.1rem; color: #666; margin-bottom: 10px;">Click the button below to access our smart booking form</p>
-                    <p style="font-size: 0.9rem; color: #888;">Our form features conditional course selection and instant email confirmation</p>
-                </div>
-                
-                <a href="https://script.google.com/macros/s/AKfycbz-8gbC01--TPe9FYi5yTFLISQ5FEJITcKaxwkGuAIGXReoPYP-3q282Tg5wmkqEflF/exec" 
-                   target="_blank" 
-                   class="btn" 
-                   style="font-size: 1.2rem; padding: 15px 40px; margin-bottom: 20px;">
-                    <i class="fas fa-external-link-alt"></i> Open Smart Booking Form
-                </a>
-                
-                <div style="background: white; padding: 20px; border-radius: 8px; margin-top: 20px; box-shadow: 0 3px 10px rgba(0,0,0,0.1);">
-                    <h4 style="color: var(--primary); margin-bottom: 15px;"><i class="fas fa-rocket"></i> Form Features</h4>
-                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; text-align: left;">
-                        <div>
-                            <p style="margin-bottom: 8px;"><strong>✅ Smart Logic</strong></p>
-                            <p style="font-size: 0.9rem; color: #666;">Courses update based on your level selection</p>
-                        </div>
-                        <div>
-                            <p style="margin-bottom: 8px;"><strong>✅ Tutor Filtering</strong></p>
-                            <p style="font-size: 0.9rem; color: #666;">Only shows tutors for your selected course</p>
-                        </div>
-                        <div>
-                            <p style="margin-bottom: 8px;"><strong>✅ Instant Emails</strong></p>
-                            <p style="font-size: 0.9rem; color: #666;">We get notified immediately</p>
-                        </div>
-                        <div>
-                            <p style="margin-bottom: 8px;"><strong>✅ Mobile Friendly</strong></p>
-                            <p style="font-size: 0.9rem; color: #666;">Works perfectly on all devices</p>
+            <div class="booking-form">
+                <form action="https://api.web3forms.com/submit" method="POST" id="smartBookingForm">
+                    <!-- Web3Forms Configuration - FIXED -->
+                    <input type="hidden" name="access_key" value="2039e2bb-3757-434c-8405-c20fc1cdeec9">
+                    <input type="hidden" name="subject" value="New Tutor Booking Request - Genius Point Academy">
+                    <input type="text" name="_honey" style="display:none">
+                    <input type="hidden" name="_redirect" value="https://yourwebsite.com/thank-you">
+                    <input type="hidden" name="_template" value="table">
+                    
+                    <div class="form-group">
+                        <label for="fullName">Full Name *</label>
+                        <input type="text" id="fullName" name="name" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Email Address *</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="phone">Phone Number *</label>
+                        <input type="tel" id="phone" name="phone" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="department">Department *</label>
+                        <input type="text" id="department" name="department" required placeholder="e.g., Electrical Engineering">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="level">Level *</label>
+                        <select id="level" name="level" required onchange="updateCourses()">
+                            <option value="">Select Your Level</option>
+                            <option value="100 Level">100 Level</option>
+                            <option value="200 Level">200 Level</option>
+                            <option value="300 Level">300 Level</option>
+                            <option value="400 Level">400 Level</option>
+                            <option value="500 Level">500 Level</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="course">Course Needed *</label>
+                        <select id="course" name="course" required onchange="updateTutors()">
+                            <option value="">Select Course</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="tutor">Preferred Tutor</label>
+                        <select id="tutor" name="tutor">
+                            <option value="">Any Available Tutor</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Preferred Contact Method *</label>
+                        <div class="contact-preferences">
+                            <label class="contact-option">
+                                <input type="checkbox" name="contact_method[]" value="whatsapp" required>
+                                <i class="fab fa-whatsapp"></i>
+                                <span>WhatsApp</span>
+                            </label>
+                            <label class="contact-option">
+                                <input type="checkbox" name="contact_method[]" value="email" required>
+                                <i class="fas fa-envelope"></i>
+                                <span>Email</span>
+                            </label>
+                            <label class="contact-option">
+                                <input type="checkbox" name="contact_method[]" value="phone" required>
+                                <i class="fas fa-phone"></i>
+                                <span>Phone Call</span>
+                            </label>
                         </div>
                     </div>
+
+                    <div class="form-group">
+                        <label for="message">Additional Message (Optional)</label>
+                        <textarea id="message" name="message" rows="4" placeholder="Any specific topics you need help with? Preferred time for tutoring sessions?"></textarea>
+                    </div>
+
+                    <button type="submit" class="btn" style="width: 100%;">
+                        <i class="fas fa-paper-plane"></i> Submit Booking Request
+                    </button>
+                </form>
+
+                <!-- Confirmation Message -->
+                <div class="confirmation-message" id="confirmationMessage">
+                    <h4><i class="fas fa-check-circle" style="color: var(--success);"></i> Booking Request Received!</h4>
+                    <p>We've received your booking request for <strong id="confirmedCourse"></strong>. We'll contact you within 24 hours via your preferred method.</p>
+                    <div class="whatsapp-info">
+                        <i class="fab fa-whatsapp"></i>
+                        <span>For urgent inquiries: <strong>+2347038248528</strong></span>
+                    </div>
+                    <button class="btn" style="margin-top: 15px; background: var(--primary);" onclick="resetForm()">✕ Close & Start New Booking</button>
                 </div>
             </div>
 
             <div class="booking-info">
                 <i class="fas fa-calendar-check"></i>
                 <h3>How It Works</h3>
-                <p>1. Click "Open Smart Booking Form"</p>
-                <p>2. Fill out your details in the new tab</p>
-                <p>3. Select level → See relevant courses</p>
-                <p>4. Choose course → Available tutors show</p>
-                <p>5. Select preferred tutor & contact method</p>
-                <p>6. Submit & get instant confirmation</p>
-                <p>7. We contact you within 24 hours</p>
-
-                <div style="margin-top: 30px; padding: 20px; background: white; border-radius: 8px; box-shadow: 0 3px 10px rgba(0,0,0,0.1);">
-                    <h4 style="color: var(--primary); margin-bottom: 10px;"><i class="fas fa-envelope"></i> Instant Notification</h4>
-                    <p style="font-size: 0.9rem;">When you submit the form, we receive an immediate email with all your booking details.</p>
-                </div>
+                <p>1. Fill out the booking form with your details</p>
+                <p>2. Select your level → See relevant courses</p>
+                <p>3. Choose course → Available tutors show</p>
+                <p>4. Select preferred tutor (optional)</p>
+                <p>5. Choose contact method</p>
+                <p>6. Submit your request</p>
+                <p>7. Get instant confirmation</p>
 
                 <button onclick="sendWhatsAppMessage()" class="btn" style="background-color: #25D366; margin-top: 20px; width: 100%;">
                     <i class="fab fa-whatsapp"></i> Message on WhatsApp
@@ -1514,46 +1569,142 @@
             }
         }
 
-       // Form submission for Netlify
+    // Form submission for Web3Forms - FIXED
 document.getElementById('smartBookingForm').addEventListener('submit', function(e) {
-    // Let Netlify handle the submission
-    const course = document.getElementById('course').options[document.getElementById('course').selectedIndex].text;
+    e.preventDefault(); // Prevent default form submission
     
-    // Show confirmation immediately
-    document.getElementById('confirmedCourse').textContent = course;
-    document.getElementById('confirmationMessage').classList.add('show');
+    const form = this;
+    const submitButton = form.querySelector('button[type="submit"]');
+    const originalText = submitButton.innerHTML;
+    const courseSelect = document.getElementById('course');
+    const course = courseSelect.options[courseSelect.selectedIndex] ? courseSelect.options[courseSelect.selectedIndex].text : 'No course selected';
     
-    // Reset form after delay
-    setTimeout(() => {
-        this.reset();
-        document.querySelectorAll('.contact-option').forEach(option => {
-            option.classList.remove('selected');
-        });
-        // Reset dynamic selects
-        document.getElementById('course').innerHTML = '<option value="">Select Course</option>';
-        document.getElementById('tutor').innerHTML = '<option value="">Any Available Tutor</option>';
-        // Hide confirmation after 10 seconds
-        setTimeout(() => {
-            document.getElementById('confirmationMessage').classList.remove('show');
-        }, 10000);
-    }, 3000);
-});
-        // Contact option selection
-        document.querySelectorAll('.contact-option').forEach(option => {
-            option.addEventListener('click', function() {
-                const checkbox = this.querySelector('input');
-                checkbox.checked = !checkbox.checked;
-                this.classList.toggle('selected', checkbox.checked);
-            });
-        });
-
-        // WhatsApp direct message functionality
-        function sendWhatsAppMessage() {
-            const phone = '+2347038248528';
-            const message = `Hello GPA! I'm interested in booking a tutor. Can you help me choose the right course and tutor?`;
-            const url = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
-            window.open(url, '_blank');
+    // Validate required fields
+    const requiredFields = form.querySelectorAll('[required]');
+    let isValid = true;
+    
+    requiredFields.forEach(field => {
+        if (!field.value.trim()) {
+            isValid = false;
+            field.style.borderColor = 'red';
+        } else {
+            field.style.borderColor = '';
         }
+    });
+    
+    if (!isValid) {
+        alert('Please fill in all required fields marked with *');
+        return;
+    }
+    
+    // Show loading state
+    submitButton.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Processing...';
+    submitButton.disabled = true;
+    
+    // Update confirmation message
+    document.getElementById('confirmedCourse').textContent = course;
+    
+    // Create FormData object
+    const formData = new FormData(form);
+    
+    // Send to Web3Forms using fetch API
+    fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        body: formData
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.success) {
+            // Show success message
+            document.getElementById('confirmationMessage').classList.add('show');
+            submitButton.innerHTML = '<i class="fas fa-check"></i> Request Sent!';
+            
+            // Scroll to confirmation
+            document.getElementById('confirmationMessage').scrollIntoView({ 
+                behavior: 'smooth', 
+                block: 'center' 
+            });
+            
+            // Reset form after 2 seconds
+            setTimeout(() => {
+                resetForm();
+                submitButton.innerHTML = originalText;
+                submitButton.disabled = false;
+            }, 5000);
+            
+        } else {
+            throw new Error('Form submission failed');
+        }
+    })
+    .catch(error => {
+        console.error('Error:', error);
+        // Fallback: show confirmation anyway and try traditional form submission
+        document.getElementById('confirmationMessage').classList.add('show');
+        submitButton.innerHTML = '<i class="fas fa-check"></i> Request Sent!';
+        
+        // Traditional form submission as fallback
+        form.submit();
+        
+        setTimeout(() => {
+            resetForm();
+            submitButton.innerHTML = originalText;
+            submitButton.disabled = false;
+        }, 5000);
+    });
+});
+
+// Fixed resetForm function
+function resetForm() {
+    const form = document.getElementById('smartBookingForm');
+    const submitButton = form.querySelector('button[type="submit"]');
+    
+    // Reset the form
+    form.reset();
+    
+    // Hide confirmation message
+    document.getElementById('confirmationMessage').classList.remove('show');
+    
+    // Reset course and tutor dropdowns
+    document.getElementById('course').innerHTML = '<option value="">Select Course</option>';
+    document.getElementById('tutor').innerHTML = '<option value="">Any Available Tutor</option>';
+    
+    // Reset contact options visually
+    document.querySelectorAll('.contact-option').forEach(option => {
+        option.classList.remove('selected');
+        const checkbox = option.querySelector('input');
+        if (checkbox) {
+            checkbox.checked = false;
+        }
+    });
+    
+    // Reset button state
+    submitButton.innerHTML = '<i class="fas fa-paper-plane"></i> Submit Booking Request';
+    submitButton.disabled = false;
+    
+    // Clear any red borders from validation
+    const fields = form.querySelectorAll('input, select, textarea');
+    fields.forEach(field => {
+        field.style.borderColor = '';
+    });
+}
+
+// Contact option selection - FIXED
+document.querySelectorAll('.contact-option').forEach(option => {
+    option.addEventListener('click', function() {
+        const checkbox = this.querySelector('input[type="checkbox"]');
+        if (checkbox) {
+            checkbox.checked = !checkbox.checked;
+            this.classList.toggle('selected', checkbox.checked);
+        }
+    });
+});
+
+function sendWhatsAppMessage() {
+    const phone = '+2347038248528';
+    const message = `Hello GPA! I'm interested in booking a tutor. Can you help me choose the right course and tutor?`;
+    const url = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
+    window.open(url, '_blank');
+}
 
         // Smooth scrolling for navigation links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
