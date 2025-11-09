@@ -1296,49 +1296,66 @@
         </div>
     </section>
 
-    <!-- Booking Section -->
+   <!-- Booking Section -->
 <section id="booking" style="background-color: var(--light);">
     <div class="container">
         <div class="section-title">
             <h2>Book a Tutor</h2>
         </div>
         <div class="booking-container">
-            <div class="booking-form">
-                <iframe 
-                    src="https://script.google.com/macros/s/AKfycbz-8gbC01--TPe9FYi5yTFLISQ5FEJITcKaxwkGuAIGXReoPYP-3q282Tg5wmkqEflF/exec" 
-                    width="100%" 
-                    height="650" 
-                    frameborder="0"
-                    style="border-radius: 8px; border: 1px solid #ddd;"
-                    onload="resizeIframe(this)">
-                </iframe>
-                <script>
-                    function resizeIframe(iframe) {
-                        // Auto-resize to fit content
-                        setTimeout(() => {
-                            iframe.style.height = iframe.contentWindow.document.body.scrollHeight + 50 + 'px';
-                        }, 1000);
-                    }
-                    
-                    // Listen for messages from iframe (for resizing)
-                    window.addEventListener('message', function(event) {
-                        if (event.data && event.data.type === 'resize') {
-                            document.querySelector('iframe').style.height = event.data.height + 'px';
-                        }
-                    });
-                </script>
+            <div class="booking-form" style="text-align: center; padding: 50px 30px;">
+                <div style="margin-bottom: 30px;">
+                    <i class="fas fa-calendar-check" style="font-size: 4rem; color: var(--primary); margin-bottom: 20px;"></i>
+                    <h3 style="color: var(--primary); margin-bottom: 15px;">Ready to Book Your Tutor?</h3>
+                    <p style="font-size: 1.1rem; color: #666; margin-bottom: 10px;">Click the button below to access our smart booking form</p>
+                    <p style="font-size: 0.9rem; color: #888;">Our form features conditional course selection and instant email confirmation</p>
+                </div>
+                
+                <a href="https://script.google.com/macros/s/AKfycbz-8gbC01--TPe9FYi5yTFLISQ5FEJITcKaxwkGuAIGXReoPYP-3q282Tg5wmkqEflF/exec" 
+                   target="_blank" 
+                   class="btn" 
+                   style="font-size: 1.2rem; padding: 15px 40px; margin-bottom: 20px;">
+                    <i class="fas fa-external-link-alt"></i> Open Smart Booking Form
+                </a>
+                
+                <div style="background: white; padding: 20px; border-radius: 8px; margin-top: 20px; box-shadow: 0 3px 10px rgba(0,0,0,0.1);">
+                    <h4 style="color: var(--primary); margin-bottom: 15px;"><i class="fas fa-rocket"></i> Form Features</h4>
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; text-align: left;">
+                        <div>
+                            <p style="margin-bottom: 8px;"><strong>✅ Smart Logic</strong></p>
+                            <p style="font-size: 0.9rem; color: #666;">Courses update based on your level selection</p>
+                        </div>
+                        <div>
+                            <p style="margin-bottom: 8px;"><strong>✅ Tutor Filtering</strong></p>
+                            <p style="font-size: 0.9rem; color: #666;">Only shows tutors for your selected course</p>
+                        </div>
+                        <div>
+                            <p style="margin-bottom: 8px;"><strong>✅ Instant Emails</strong></p>
+                            <p style="font-size: 0.9rem; color: #666;">We get notified immediately</p>
+                        </div>
+                        <div>
+                            <p style="margin-bottom: 8px;"><strong>✅ Mobile Friendly</strong></p>
+                            <p style="font-size: 0.9rem; color: #666;">Works perfectly on all devices</p>
+                        </div>
+                    </div>
+                </div>
             </div>
 
             <div class="booking-info">
                 <i class="fas fa-calendar-check"></i>
                 <h3>How It Works</h3>
-                <p>1. Fill out the smart booking form</p>
-                <p>2. Select level → See relevant courses</p>
-                <p>3. Choose course → Select preferred tutor</p>
-                <p>4. Select contact method</p>
-                <p>5. Submit & get instant confirmation</p>
-                <p>6. We contact you within 24 hours</p>
-                
+                <p>1. Click "Open Smart Booking Form"</p>
+                <p>2. Fill out your details in the new tab</p>
+                <p>3. Select level → See relevant courses</p>
+                <p>4. Choose course → Available tutors show</p>
+                <p>5. Select preferred tutor & contact method</p>
+                <p>6. Submit & get instant confirmation</p>
+                <p>7. We contact you within 24 hours</p>
+
+                <div style="margin-top: 30px; padding: 20px; background: white; border-radius: 8px; box-shadow: 0 3px 10px rgba(0,0,0,0.1);">
+                    <h4 style="color: var(--primary); margin-bottom: 10px;"><i class="fas fa-envelope"></i> Instant Notification</h4>
+                    <p style="font-size: 0.9rem;">When you submit the form, we receive an immediate email with all your booking details.</p>
+                </div>
 
                 <button onclick="sendWhatsAppMessage()" class="btn" style="background-color: #25D366; margin-top: 20px; width: 100%;">
                     <i class="fab fa-whatsapp"></i> Message on WhatsApp
