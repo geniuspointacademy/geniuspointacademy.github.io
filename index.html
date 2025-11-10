@@ -1857,7 +1857,7 @@
                                     <div class="option-content">
                                         <i class="fas fa-users"></i>
                                         <span>Group Tutorial</span>
-                                        <small>2-5 students</small>
+                                        <small>2-10 students</small>
                                     </div>
                                 </label>
                                 <label class="booking-type-option">
@@ -1865,7 +1865,7 @@
                                     <div class="option-content">
                                         <i class="fas fa-chalkboard-teacher"></i>
                                         <span>Mass Tutorial</span>
-                                        <small>6+ students</small>
+                                        <small>11+ students</small>
                                     </div>
                                 </label>
                             </div>
@@ -1874,7 +1874,7 @@
                         <!-- Student Count (Conditional) -->
                         <div class="form-group" id="studentCountGroup" style="display: none;">
                             <label for="studentCount">Number of Students</label>
-                            <input type="number" id="studentCount" name="student_count" min="1" max="50">
+                            <input type="number" id="studentCount" name="student_count" min="1" max="100">
                             <small id="studentCountHelp" class="form-text"></small>
                         </div>
 
@@ -2008,7 +2008,7 @@
                     <p><i class="fas fa-check-circle"></i> Choose preferred tutors (optional)</p>
                     <p><i class="fas fa-check-circle"></i> Select how you want to be contacted</p>
                     <p><i class="fas fa-check-circle"></i> Submit your request</p>
-                    <p><i class="fas fa-check-circle"></i> Get instant email confirmation</p>
+                    <p><i class="fas fa-check-circle"></i> Get email confirmation within 24 hours</p>
                     <p><i class="fas fa-check-circle"></i> We'll contact you within 24 hours to confirm your booking</p>
                     
                     <div style="margin-top: 30px; padding: 25px; background: rgba(255,255,255,0.1); border-radius: 12px; backdrop-filter: blur(10px);">
@@ -2234,12 +2234,12 @@
                     // Set appropriate validation
                     if (this.value === 'group') {
                         studentCountInput.min = 2;
-                        studentCountInput.max = 5;
-                        studentCountHelp.textContent = 'Group tutorials are for 2-5 students';
+                        studentCountInput.max = 10;
+                        studentCountHelp.textContent = 'Group tutorials are for 2-10 students';
                     } else if (this.value === 'mass') {
-                        studentCountInput.min = 6;
-                        studentCountInput.max = 50;
-                        studentCountHelp.textContent = 'Mass tutorials are for 6+ students';
+                        studentCountInput.min = 11;
+                        studentCountInput.max = 100;
+                        studentCountHelp.textContent = 'Mass tutorials are for 11+ students';
                     }
                     
                     studentCountInput.value = '';
