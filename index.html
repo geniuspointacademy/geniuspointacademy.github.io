@@ -3,28 +3,37 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Genius Point Academy - FUTA</title>
+    <title>Genius Point Academy - FUTA | Premier Tutorial Services</title>
+    <meta name="description" content="Find Your Academic Breakthrough at FUTA's Premier Tutorial Community. Expert tutors for STEM courses, personalized learning, and academic excellence.">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Poppins', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
 
         :root {
             --primary: #1a4b8c;
+            --primary-dark: #0f2d5c;
+            --primary-light: #2a6bc5;
             --secondary: #f8b739;
-            --light: #f5f5f5;
-            --dark: #333;
+            --secondary-dark: #e6a532;
+            --light: #f8f9fa;
+            --dark: #2d3748;
             --success: #28a745;
+            --gradient: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            --shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            --shadow-hover: 0 15px 40px rgba(0, 0, 0, 0.15);
         }
 
         body {
             background-color: #f9f9f9;
             color: var(--dark);
-            line-height: 1.6;
+            line-height: 1.7;
+            overflow-x: hidden;
         }
 
         .container {
@@ -39,10 +48,16 @@
             background-color: var(--primary);
             color: white;
             padding: 1rem 0;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            box-shadow: var(--shadow);
             position: sticky;
             top: 0;
-            z-index: 100;
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        header.scrolled {
+            padding: 0.7rem 0;
+            background-color: var(--primary-dark);
         }
 
         .header-content {
@@ -61,10 +76,15 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            background-color: white;
-            border-radius: 8px;
-            padding: 5px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            background: white;
+            border-radius: 12px;
+            padding: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .logo-img:hover {
+            transform: scale(1.05);
         }
 
         .logo-img img {
@@ -75,11 +95,13 @@
         .logo-text h1 {
             font-size: 1.8rem;
             margin-bottom: 5px;
+            font-weight: 700;
         }
 
         .logo-text p {
             font-size: 0.9rem;
-            opacity: 0.8;
+            opacity: 0.9;
+            font-weight: 300;
         }
 
         nav ul {
@@ -88,84 +110,162 @@
         }
 
         nav ul li {
-            margin-left: 20px;
+            margin-left: 25px;
+            position: relative;
         }
 
         nav ul li a {
             color: white;
             text-decoration: none;
             font-weight: 500;
-            transition: color 0.3s;
-            padding: 5px 10px;
-            border-radius: 4px;
+            transition: all 0.3s;
+            padding: 8px 12px;
+            border-radius: 6px;
+            position: relative;
         }
 
-        nav ul li a:hover {
+        nav ul li a:not(.btn):hover {
             color: var(--secondary);
+        }
+
+        nav ul li a:not(.btn)::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            width: 0;
+            height: 2px;
+            background-color: var(--secondary);
+            transition: all 0.3s ease;
+            transform: translateX(-50%);
+        }
+
+        nav ul li a:not(.btn):hover::after {
+            width: 80%;
         }
 
         .mobile-menu {
             display: none;
             font-size: 1.5rem;
             cursor: pointer;
+            color: white;
+            transition: color 0.3s;
+        }
+
+        .mobile-menu:hover {
+            color: var(--secondary);
         }
 
         /* Hero Section */
         .hero {
-            background: linear-gradient(rgba(26, 75, 140, 0.8), rgba(26, 75, 140, 0.9)), url('studentstudyingimage1.jpg');
+            background: var(--gradient), url('studentstudyingimage1.jpg');
             background-size: cover;
             background-position: center;
+            background-attachment: fixed;
             color: white;
-            padding: 5rem 0;
+            padding: 8rem 0;
             text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.3);
+            z-index: 1;
+        }
+
+        .hero .container {
+            position: relative;
+            z-index: 2;
         }
 
         .hero h2 {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
+            font-size: 3.2rem;
+            margin-bottom: 1.5rem;
+            font-weight: 700;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.2);
+            animation: fadeInUp 1s ease;
         }
 
         .hero p {
-            font-size: 1.2rem;
+            font-size: 1.3rem;
             max-width: 700px;
-            margin: 0 auto 2rem;
+            margin: 0 auto 2.5rem;
+            font-weight: 300;
+            animation: fadeInUp 1s ease 0.2s both;
         }
 
         .btn {
             display: inline-block;
             background-color: var(--secondary);
             color: var(--dark);
-            padding: 12px 30px;
-            border-radius: 5px;
+            padding: 14px 35px;
+            border-radius: 50px;
             text-decoration: none;
             font-weight: 600;
             transition: all 0.3s;
             border: none;
             cursor: pointer;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: all 0.6s;
         }
 
         .btn:hover {
-            background-color: #e6a532;
-            transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            background-color: var(--secondary-dark);
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .btn:hover::before {
+            left: 100%;
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+
+        .btn-secondary:hover {
+            background-color: white;
+            color: var(--primary);
         }
 
         /* Section Styles */
         section {
-            padding: 5rem 0;
+            padding: 6rem 0;
         }
 
         .section-title {
             text-align: center;
-            margin-bottom: 3rem;
+            margin-bottom: 4rem;
         }
 
         .section-title h2 {
-            font-size: 2.2rem;
+            font-size: 2.5rem;
             color: var(--primary);
             position: relative;
             display: inline-block;
-            padding-bottom: 10px;
+            padding-bottom: 15px;
+            font-weight: 700;
         }
 
         .section-title h2::after {
@@ -174,47 +274,85 @@
             bottom: 0;
             left: 50%;
             transform: translateX(-50%);
-            width: 80px;
-            height: 3px;
+            width: 100px;
+            height: 4px;
             background-color: var(--secondary);
+            border-radius: 2px;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto 3rem;
+            color: #666;
+            font-size: 1.1rem;
         }
 
         /* About Section */
         .about-content {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 40px;
+            gap: 50px;
             align-items: center;
         }
 
         .about-text h3 {
-            font-size: 1.8rem;
+            font-size: 2rem;
             margin-bottom: 20px;
             color: var(--primary);
+            font-weight: 600;
         }
 
         .about-text p {
-            margin-bottom: 15px;
+            margin-bottom: 20px;
+            color: #555;
+        }
+
+        .about-image {
+            position: relative;
+        }
+
+        .about-image::before {
+            content: '';
+            position: absolute;
+            top: -20px;
+            right: -20px;
+            width: 100%;
+            height: 100%;
+            background-color: var(--secondary);
+            border-radius: 15px;
+            z-index: -1;
         }
 
         .about-image img {
             width: 100%;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            border-radius: 15px;
+            box-shadow: var(--shadow);
+            transition: transform 0.5s ease;
+        }
+
+        .about-image:hover img {
+            transform: translate(-10px, -10px);
         }
 
         .mission-vision {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 30px;
-            margin-top: 30px;
+            margin-top: 40px;
         }
 
         .mission, .vision {
             background-color: white;
-            padding: 25px;
-            border-radius: 8px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s ease;
+            border-top: 4px solid var(--primary);
+        }
+
+        .mission:hover, .vision:hover {
+            transform: translateY(-10px);
         }
 
         .mission h3, .vision h3 {
@@ -223,54 +361,174 @@
             display: flex;
             align-items: center;
             gap: 10px;
+            font-weight: 600;
+        }
+
+        .mission h3 i, .vision h3 i {
+            color: var(--secondary);
+        }
+
+        /* Path to Clarity Section */
+        .path-to-clarity {
+            background-color: var(--light);
+            padding: 50px;
+            border-radius: 15px;
+            margin-top: 40px;
+            box-shadow: var(--shadow);
+        }
+
+        .path-to-clarity h3 {
+            color: var(--primary);
+            margin-bottom: 25px;
+            font-size: 1.8rem;
+            font-weight: 600;
+            text-align: center;
+        }
+
+        .learning-option {
+            margin-bottom: 30px;
+            padding: 25px;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            transition: transform 0.3s ease;
+            border-left: 4px solid var(--primary);
+        }
+
+        .learning-option:hover {
+            transform: translateY(-5px);
+        }
+
+        .learning-option h4 {
+            color: var(--primary);
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-weight: 600;
+        }
+
+        .learning-option h4 i {
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-size: 1.5rem;
+        }
+
+        /* Real Education Section */
+        .real-education {
+            margin-top: 50px;
+            padding: 40px;
+            background: white;
+            border-radius: 15px;
+            box-shadow: var(--shadow);
+            border-top: 4px solid var(--secondary);
+        }
+
+        .real-education h3 {
+            color: var(--primary);
+            margin-bottom: 25px;
+            font-size: 1.8rem;
+            font-weight: 600;
+            text-align: center;
+        }
+
+        .education-type {
+            margin: 25px 0;
+            padding: 20px;
+            border-left: 4px solid var(--secondary);
+            background-color: var(--light);
+            border-radius: 8px;
+            transition: transform 0.3s ease;
+        }
+
+        .education-type:hover {
+            transform: translateX(10px);
+        }
+
+        .education-type h4 {
+            color: var(--primary);
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 600;
+        }
+
+        .education-type h4 i {
+            color: var(--secondary);
         }
 
         /* Tutors Section */
+        .tutors-section {
+            background: linear-gradient(to bottom, var(--light) 0%, white 100%);
+        }
+
         .tutors-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
             gap: 30px;
         }
 
         .tutor-card {
             background-color: white;
-            border-radius: 8px;
+            border-radius: 15px;
             overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-            transition: transform 0.3s;
+            box-shadow: var(--shadow);
+            transition: all 0.4s ease;
+            position: relative;
         }
 
         .tutor-card:hover {
-            transform: translateY(-10px);
+            transform: translateY(-15px);
+            box-shadow: var(--shadow-hover);
         }
 
         .tutor-img {
-            height: 200px;
-            background-color: #e0e0e0;
+            height: 220px;
+            background: var(--gradient);
             display: flex;
             align-items: center;
             justify-content: center;
-            color: #777;
+            color: white;
             overflow: hidden;
+            position: relative;
+        }
+
+        .tutor-img::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.1);
         }
 
         .tutor-img img {
             width: 100%;
             height: 100%;
             object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .tutor-card:hover .tutor-img img {
+            transform: scale(1.1);
         }
 
         .tutor-img i {
             font-size: 4rem;
+            opacity: 0.8;
         }
 
         .tutor-info {
-            padding: 20px;
+            padding: 25px;
         }
 
         .tutor-info h3 {
             color: var(--primary);
             margin-bottom: 5px;
+            font-weight: 600;
         }
 
         .tutor-info .full-name {
@@ -282,26 +540,27 @@
         .tutor-level-dept {
             color: #888;
             font-size: 0.85rem;
-            margin-bottom: 10px;
+            margin-bottom: 15px;
+            font-weight: 500;
         }
 
         .tutor-info p {
             color: #666;
-            margin-bottom: 15px;
+            margin-bottom: 20px;
             font-size: 0.9rem;
         }
 
         .tutor-contact {
-            margin-top: 15px;
-            padding-top: 15px;
+            margin-top: 20px;
+            padding-top: 20px;
             border-top: 1px solid #eee;
         }
 
         .contact-item {
             display: flex;
             align-items: center;
-            gap: 8px;
-            margin-bottom: 8px;
+            gap: 10px;
+            margin-bottom: 10px;
             font-size: 0.85rem;
         }
 
@@ -314,49 +573,58 @@
             display: flex;
             flex-wrap: wrap;
             gap: 8px;
-            margin-top: 10px;
+            margin-top: 15px;
         }
 
         .course-tag {
             background-color: var(--light);
-            padding: 5px 10px;
+            padding: 6px 12px;
             border-radius: 20px;
             font-size: 0.75rem;
             color: var(--dark);
+            font-weight: 500;
         }
 
         /* Courses Section */
+        .courses-section {
+            background-color: white;
+        }
+
         .level-tabs {
             display: flex;
             justify-content: center;
-            margin-bottom: 30px;
+            margin-bottom: 40px;
             flex-wrap: wrap;
+            background: white;
+            border-radius: 50px;
+            padding: 5px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
         }
 
         .level-tab {
-            padding: 10px 20px;
-            background-color: white;
-            border: 1px solid #ddd;
+            padding: 12px 25px;
+            background-color: transparent;
+            border: none;
             cursor: pointer;
             transition: all 0.3s;
+            font-weight: 500;
+            border-radius: 50px;
+            flex: 1;
+            text-align: center;
         }
 
         .level-tab.active {
             background-color: var(--primary);
             color: white;
-            border-color: var(--primary);
-        }
-
-        .level-tab:first-child {
-            border-radius: 5px 0 0 5px;
-        }
-
-        .level-tab:last-child {
-            border-radius: 0 5px 5px 0;
+            box-shadow: 0 4px 10px rgba(26, 75, 140, 0.3);
         }
 
         .courses-content {
             display: none;
+            animation: fadeIn 0.5s ease;
         }
 
         .courses-content.active {
@@ -365,10 +633,16 @@
 
         .course-card {
             background-color: white;
-            border-radius: 8px;
-            padding: 25px;
-            margin-bottom: 20px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            border-radius: 12px;
+            padding: 30px;
+            margin-bottom: 25px;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s ease;
+            border-left: 4px solid var(--primary);
+        }
+
+        .course-card:hover {
+            transform: translateY(-5px);
         }
 
         .course-card h3 {
@@ -377,68 +651,124 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
+            font-weight: 600;
+        }
+
+        .course-card h3 span {
+            font-weight: 400;
+            color: #666;
+            font-size: 1rem;
         }
 
         .tutors-list {
             display: flex;
             flex-wrap: wrap;
             gap: 10px;
-            margin-top: 10px;
+            margin-top: 15px;
         }
 
         .tutor-tag {
             background-color: var(--light);
-            padding: 5px 15px;
+            padding: 8px 18px;
             border-radius: 20px;
             font-size: 0.9rem;
+            font-weight: 500;
+            transition: all 0.3s;
+        }
+
+        .tutor-tag:hover {
+            background-color: var(--primary);
+            color: white;
+            transform: translateY(-2px);
         }
 
         /* Booking Section */
+        .booking-section {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: white;
+        }
+
+        .booking-section .section-title h2 {
+            color: white;
+        }
+
+        .booking-section .section-title h2::after {
+            background-color: var(--secondary);
+        }
+
         .booking-container {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 40px;
-            align-items: center;
+            gap: 50px;
+            align-items: start;
         }
 
         .booking-form {
             background-color: white;
-            padding: 30px;
-            border-radius: 8px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: var(--shadow-hover);
+            color: var(--dark);
         }
 
         .form-group {
-            margin-bottom: 20px;
+            margin-bottom: 25px;
         }
 
         .form-group label {
             display: block;
-            margin-bottom: 8px;
-            font-weight: 500;
+            margin-bottom: 10px;
+            font-weight: 600;
+            color: var(--primary);
         }
 
         .form-group input, .form-group select, .form-group textarea {
             width: 100%;
-            padding: 12px 15px;
+            padding: 14px 18px;
             border: 1px solid #ddd;
-            border-radius: 5px;
+            border-radius: 8px;
             font-size: 1rem;
+            transition: all 0.3s;
+            background-color: #f9f9f9;
+        }
+
+        .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(26, 75, 140, 0.1);
+            outline: none;
+            background-color: white;
         }
 
         .booking-info {
             text-align: center;
+            color: white;
         }
 
         .booking-info i {
             font-size: 5rem;
-            color: var(--primary);
-            margin-bottom: 20px;
+            color: var(--secondary);
+            margin-bottom: 25px;
+            display: block;
         }
 
         .booking-info h3 {
-            color: var(--primary);
+            color: white;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+
+        .booking-info p {
             margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .booking-info p i {
+            font-size: 1rem;
+            color: var(--secondary);
+            margin: 0;
         }
 
         /* Booking Type Options */
@@ -461,7 +791,7 @@
         .booking-type-option .option-content {
             padding: 20px 15px;
             border: 2px solid #ddd;
-            border-radius: 8px;
+            border-radius: 10px;
             text-align: center;
             transition: all 0.3s;
             background-color: white;
@@ -478,6 +808,7 @@
             display: block;
             font-weight: 600;
             margin-bottom: 5px;
+            color: var(--dark);
         }
 
         .booking-type-option .option-content small {
@@ -489,10 +820,12 @@
             border-color: var(--primary);
             background-color: rgba(26, 75, 140, 0.05);
             box-shadow: 0 0 0 2px rgba(26, 75, 140, 0.2);
+            transform: scale(1.05);
         }
 
         .booking-type-option:hover .option-content {
             border-color: var(--primary);
+            transform: translateY(-5px);
         }
 
         /* Form Text Helper */
@@ -509,7 +842,7 @@
         }
 
         .course-selection label, .tutor-selection label {
-            font-weight: 500;
+            font-weight: 600;
             color: var(--primary);
         }
 
@@ -517,11 +850,11 @@
             margin-bottom: 20px;
             padding: 15px;
             background-color: #f9f9f9;
-            border-radius: 5px;
-            border-left: 3px solid var(--primary);
+            border-radius: 8px;
+            border-left: 4px solid var(--primary);
         }
 
-        /* New Contact Preference Styles */
+        /* Contact Preference Styles */
         .contact-preferences {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
@@ -532,16 +865,17 @@
         .contact-option {
             display: flex;
             align-items: center;
-            gap: 8px;
-            padding: 10px;
+            gap: 10px;
+            padding: 12px 15px;
             border: 1px solid #ddd;
-            border-radius: 5px;
+            border-radius: 8px;
             cursor: pointer;
             transition: all 0.3s;
+            background-color: #f9f9f9;
         }
 
         .contact-option:hover {
-            background-color: #f5f5f5;
+            background-color: #f0f0f0;
         }
 
         .contact-option.selected {
@@ -557,10 +891,11 @@
         .confirmation-message {
             background-color: #e8f5e8;
             border: 1px solid #4caf50;
-            border-radius: 5px;
-            padding: 15px;
-            margin-top: 20px;
+            border-radius: 8px;
+            padding: 20px;
+            margin-top: 25px;
             display: none;
+            animation: fadeIn 0.5s ease;
         }
 
         .confirmation-message.show {
@@ -570,32 +905,33 @@
         .whatsapp-info {
             background-color: #25D366;
             color: white;
-            padding: 10px 15px;
-            border-radius: 5px;
-            margin-top: 10px;
+            padding: 12px 18px;
+            border-radius: 8px;
+            margin-top: 15px;
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 12px;
         }
 
         /* Footer */
         footer {
-            background-color: var(--primary);
+            background-color: var(--primary-dark);
             color: white;
-            padding: 3rem 0 1rem;
+            padding: 4rem 0 1.5rem;
         }
 
         .footer-content {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 30px;
-            margin-bottom: 2rem;
+            gap: 40px;
+            margin-bottom: 3rem;
         }
 
         .footer-section h3 {
-            margin-bottom: 20px;
+            margin-bottom: 25px;
             position: relative;
-            padding-bottom: 10px;
+            padding-bottom: 12px;
+            font-weight: 600;
         }
 
         .footer-section h3::after {
@@ -604,12 +940,14 @@
             bottom: 0;
             left: 0;
             width: 50px;
-            height: 2px;
+            height: 3px;
             background-color: var(--secondary);
+            border-radius: 2px;
         }
 
         .footer-section p {
             margin-bottom: 15px;
+            opacity: 0.9;
         }
 
         .footer-section ul {
@@ -617,17 +955,21 @@
         }
 
         .footer-section ul li {
-            margin-bottom: 10px;
+            margin-bottom: 12px;
         }
 
         .footer-section ul li a {
             color: #ddd;
             text-decoration: none;
-            transition: color 0.3s;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
         }
 
         .footer-section ul li a:hover {
             color: var(--secondary);
+            transform: translateX(5px);
         }
 
         .social-links {
@@ -640,8 +982,8 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            width: 40px;
-            height: 40px;
+            width: 42px;
+            height: 42px;
             background-color: rgba(255, 255, 255, 0.1);
             border-radius: 50%;
             color: white;
@@ -651,12 +993,14 @@
         .social-links a:hover {
             background-color: var(--secondary);
             color: var(--dark);
+            transform: translateY(-5px);
         }
 
         .footer-bottom {
             text-align: center;
-            padding-top: 20px;
+            padding-top: 25px;
             border-top: 1px solid rgba(255, 255, 255, 0.1);
+            opacity: 0.8;
         }
 
         /* Modal */
@@ -667,20 +1011,22 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(0, 0, 0, 0.5);
-            z-index: 1000;
+            background-color: rgba(0, 0, 0, 0.7);
+            z-index: 2000;
             align-items: center;
             justify-content: center;
+            animation: fadeIn 0.3s ease;
         }
 
         .modal-content {
             background-color: white;
             width: 90%;
             max-width: 500px;
-            border-radius: 8px;
-            padding: 30px;
+            border-radius: 15px;
+            padding: 40px;
             position: relative;
-            animation: modalFade 0.3s;
+            animation: modalFade 0.4s ease;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
         }
 
         @keyframes modalFade {
@@ -688,55 +1034,67 @@
             to {opacity: 1; transform: translateY(0);}
         }
 
+        @keyframes fadeIn {
+            from {opacity: 0;}
+            to {opacity: 1;}
+        }
+
+        @keyframes fadeInUp {
+            from {opacity: 0; transform: translateY(30px);}
+            to {opacity: 1; transform: translateY(0);}
+        }
+
         .close-modal {
             position: absolute;
             top: 15px;
-            right: 15px;
-            font-size: 1.5rem;
+            right: 20px;
+            font-size: 1.8rem;
             cursor: pointer;
             color: #777;
+            transition: color 0.3s;
         }
 
-        /* New Content Styles */
-        .path-to-clarity {
-            background-color: var(--light);
-            padding: 40px;
-            border-radius: 10px;
-            margin-top: 30px;
-        }
-
-        .learning-option {
-            margin-bottom: 25px;
-            padding: 20px;
-            background: white;
-            border-radius: 8px;
-            box-shadow: 0 3px 10px rgba(0,0,0,0.08);
-        }
-
-        .learning-option h4 {
+        .close-modal:hover {
             color: var(--primary);
+        }
+
+        /* Stats Section */
+        .stats-section {
+            background: var(--gradient);
+            color: white;
+            padding: 4rem 0;
+        }
+
+        .stats-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 20px;
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 700;
             margin-bottom: 10px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
+            display: block;
         }
 
-        .real-education {
-            margin-top: 40px;
-            padding: 30px;
-            background: white;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-        }
-
-        .education-type {
-            margin: 20px 0;
-            padding: 15px;
-            border-left: 4px solid var(--secondary);
-            background-color: #f9f9f9;
+        .stat-text {
+            font-size: 1.1rem;
+            opacity: 0.9;
         }
 
         /* Responsive Styles */
+        @media (max-width: 1200px) {
+            .hero h2 {
+                font-size: 2.8rem;
+            }
+        }
+
         @media (max-width: 992px) {
             .about-content, .booking-container, .mission-vision {
                 grid-template-columns: 1fr;
@@ -744,6 +1102,14 @@
 
             .about-image {
                 order: -1;
+            }
+
+            .hero h2 {
+                font-size: 2.5rem;
+            }
+
+            .hero p {
+                font-size: 1.1rem;
             }
         }
 
@@ -784,8 +1150,12 @@
                 display: block;
             }
 
+            .hero {
+                padding: 6rem 0;
+            }
+
             .hero h2 {
-                font-size: 2rem;
+                font-size: 2.2rem;
             }
 
             .hero p {
@@ -793,14 +1163,54 @@
             }
 
             .section-title h2 {
+                font-size: 2rem;
+            }
+
+            .path-to-clarity, .real-education {
+                padding: 30px 20px;
+            }
+
+            .booking-form {
+                padding: 25px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .hero h2 {
                 font-size: 1.8rem;
+            }
+
+            .section-title h2 {
+                font-size: 1.7rem;
+            }
+
+            .tutors-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .level-tabs {
+                flex-direction: column;
+                border-radius: 12px;
+            }
+
+            .level-tab {
+                border-radius: 8px;
+                margin-bottom: 5px;
+            }
+
+            .booking-type-options {
+                grid-template-columns: 1fr;
+            }
+
+            .stats-container {
+                grid-template-columns: 1fr 1fr;
             }
         }
     </style>
 </head>
 <body>
     <!-- Header -->
-    <header>
+    <header id="header">
         <div class="container">
             <div class="header-content">
                 <div class="logo">
@@ -833,7 +1243,34 @@
         <div class="container">
             <h2>Welcome to Genius Point Academy</h2>
             <p>Find Your Academic Breakthrough at FUTA's Premier Tutorial Community</p>
-            <a href="#booking" class="btn">Book a Tutor Now</a>
+            <div style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;">
+                <a href="#booking" class="btn">Book a Tutor Now</a>
+                <a href="#courses" class="btn btn-secondary">View Courses</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats-section">
+        <div class="container">
+            <div class="stats-container">
+                <div class="stat-item">
+                    <span class="stat-number">50+</span>
+                    <span class="stat-text">Courses Covered</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">8+</span>
+                    <span class="stat-text">Expert Tutors</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">500+</span>
+                    <span class="stat-text">Students Helped</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">98%</span>
+                    <span class="stat-text">Success Rate</span>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -843,62 +1280,77 @@
             <div class="section-title">
                 <h2>About GPA</h2>
             </div>
+            <p class="section-subtitle">We are FUTA's premier tutorial community dedicated to helping students achieve academic excellence through personalized learning approaches.</p>
+            
             <div class="about-content">
                 <div class="about-text">
                     <h3>Who We Are</h3>
                     <p>We know what it feels like to hit a wall—when a concept just won't click, or a test date looms large. At Genius Point Academy, we built a community, not just a tutoring service, dedicated to helping students move past frustration and into genuine mastery and confidence.</p>
                     <p>Our mission is simple: To provide the precise support you need, when you need it, ensuring no student is left behind.</p>
                     
-                    <div class="path-to-clarity">
-                        <h3 style="color: var(--primary); margin-bottom: 20px;">Your Path to Clarity</h3>
-                        <p style="margin-bottom: 20px;">We understand that learning isn't one-size-fits-all, so we offer flexible, high-impact environments designed around you:</p>
-                        
-                        <div class="learning-option">
-                            <h4><i class="fas fa-user-graduate"></i> 1:1 Personalized Tutorials</h4>
-                            <p>This is where the magic happens. You work side-by-side with a dedicated mentor who digs into your specific struggles, custom-builds a strategy just for you, and focuses on true understanding—not just memorization.</p>
+                    <div class="mission-vision">
+                        <div class="mission">
+                            <h3><i class="fas fa-bullseye"></i> Our Mission</h3>
+                            <p>To empower students with personalized learning strategies that transform academic challenges into opportunities for growth and success.</p>
                         </div>
-                        
-                        <div class="learning-option">
-                            <h4><i class="fas fa-users"></i> Private Group Tutoring</h4>
-                            <p>Bring your study group, share the cost, and thrive together! We offer focused, collaborative sessions where you can debate concepts, solve problems as a team, and reinforce learning under the guidance of an expert.</p>
+                        <div class="vision">
+                            <h3><i class="fas fa-eye"></i> Our Vision</h3>
+                            <p>To become the leading academic support community where every student discovers their potential and achieves breakthrough results.</p>
                         </div>
-                        
-                                      <div class="learning-option">
-                            <h4><i class="fas fa-chalkboard-teacher"></i> Mass Tutorials</h4>
-                            <p>Need a quick, powerful refresh before a major exam? Join our engaging, large-scale sessions designed to efficiently demystify entire topics, consolidate knowledge, and boost your curriculum confidence quickly.</p>
-                        </div>
-                    </div>
-                    
-                    <div class="real-education">
-                        <h3 style="color: var(--primary); margin-bottom: 20px;">Real Education, Real Access</h3>
-                        <p>We believe expertise should be accessible to everyone. That's why we offer a blend of support to get you started and keep you going:</p>
-                        
-                        <div class="education-type">
-                            <h4><i class="fas fa-graduation-cap"></i> Free Classes</h4>
-                            <p>Jump in immediately! Access essential introductory workshops, foundational subject reviews, and large-scale concept previews to build momentum and get a feel for our community—no commitment necessary.</p>
-                        </div>
-                        
-                        <div class="education-type">
-                            <h4><i class="fas fa-star"></i> Paid Classes</h4>
-                            <p>Unlock premium resources, intensive exam prep bootcamps, and the dedicated time of our expert tutors through our specialized group and personalized programs.</p>
-                        </div>
-                        
-                        <p style="margin-top: 20px; font-weight: bold;">Stop just going through the motions. Join the Genius Point Academy community and start transforming your academic effort into real, measurable results.</p>
                     </div>
                 </div>
                 <div class="about-image">
                     <img src="collagepicture.jpg" alt="Genius Point Academy Students">
                 </div>
             </div>
+            
+            <div class="path-to-clarity">
+                <h3>Your Path to Clarity</h3>
+                <p style="text-align: center; margin-bottom: 30px;">We understand that learning isn't one-size-fits-all, so we offer flexible, high-impact environments designed around you:</p>
+                
+                <div class="learning-option">
+                    <h4><i class="fas fa-user-graduate"></i> 1:1 Personalized Tutorials</h4>
+                    <p>This is where the magic happens. You work side-by-side with a dedicated mentor who digs into your specific struggles, custom-builds a strategy just for you, and focuses on true understanding—not just memorization.</p>
+                </div>
+                
+                <div class="learning-option">
+                    <h4><i class="fas fa-users"></i> Private Group Tutoring</h4>
+                    <p>Bring your study group, share the cost, and thrive together! We offer focused, collaborative sessions where you can debate concepts, solve problems as a team, and reinforce learning under the guidance of an expert.</p>
+                </div>
+                
+                <div class="learning-option">
+                    <h4><i class="fas fa-chalkboard-teacher"></i> Mass Tutorials</h4>
+                    <p>Need a quick, powerful refresh before a major exam? Join our engaging, large-scale sessions designed to efficiently demystify entire topics, consolidate knowledge, and boost your curriculum confidence quickly.</p>
+                </div>
+            </div>
+            
+            <div class="real-education">
+                <h3>Real Education, Real Access</h3>
+                <p style="text-align: center; margin-bottom: 30px;">We believe expertise should be accessible to everyone. That's why we offer a blend of support to get you started and keep you going:</p>
+                
+                <div class="education-type">
+                    <h4><i class="fas fa-graduation-cap"></i> Free Classes</h4>
+                    <p>Jump in immediately! Access essential introductory workshops, foundational subject reviews, and large-scale concept previews to build momentum and get a feel for our community—no commitment necessary.</p>
+                </div>
+                
+                <div class="education-type">
+                    <h4><i class="fas fa-star"></i> Paid Classes</h4>
+                    <p>Unlock premium resources, intensive exam prep bootcamps, and the dedicated time of our expert tutors through our specialized group and personalized programs.</p>
+                </div>
+                
+                <p style="margin-top: 30px; text-align: center; font-weight: bold; font-size: 1.1rem;">Stop just going through the motions. Join the Genius Point Academy community and start transforming your academic effort into real, measurable results.</p>
+            </div>
         </div>
     </section>
 
     <!-- Tutors Section -->
-    <section id="tutors" style="background-color: var(--light);">
+    <section id="tutors" class="tutors-section">
         <div class="container">
             <div class="section-title">
-                <h2>Our Tutors</h2>
+                <h2>Our Expert Tutors</h2>
             </div>
+            <p class="section-subtitle">Meet our team of dedicated and experienced tutors who are passionate about helping you succeed in your academic journey.</p>
+            
             <div class="tutors-grid">
                 <!-- Tutor 1 - E-Simple -->
                 <div class="tutor-card">
@@ -944,7 +1396,8 @@
                     <div class="tutor-info">
                         <h3>Muzzle</h3>
                         <div class="full-name">Mathematics Specialist</div>
-                        <div class="tutor-level-dept">400L | Electrical & Electronics Engineering</div><div class="tutor-level-dept">400L | Mechanical Engineering</div>
+                        <div class="tutor-level-dept">400L | Electrical & Electronics Engineering</div>
+                        <div class="tutor-level-dept">400L | Mechanical Engineering</div>
                         <div class="tutor-level-dept">Experienced Tutor</div>
                         <p>Mathematics specialist focused on making complex mathematical concepts accessible and understandable for students at all levels.</p>
                         <div class="tutor-contact">
@@ -1162,11 +1615,12 @@
     </section>
 
     <!-- Courses Section -->
-    <section id="courses">
+    <section id="courses" class="courses-section">
         <div class="container">
             <div class="section-title">
                 <h2>Available Courses</h2>
             </div>
+            <p class="section-subtitle">Browse our comprehensive list of courses across all academic levels, taught by our expert tutors.</p>
             
             <div class="level-tabs">
                 <div class="level-tab active" data-level="100">100 Level</div>
@@ -1407,11 +1861,13 @@
     </section>
 
     <!-- Booking Section -->
-    <section id="booking" style="background-color: var(--light);">
+    <section id="booking" class="booking-section">
         <div class="container">
             <div class="section-title">
                 <h2>Book a Tutor</h2>
             </div>
+            <p class="section-subtitle" style="color: rgba(255,255,255,0.8);">Ready to achieve your academic breakthrough? Book a session with our expert tutors today!</p>
+            
             <div class="booking-container">
                 <div class="booking-form">
                     <form action="https://formsubmit.co/academygeniuspoint@gmail.com" method="POST" id="bookingForm">
@@ -1567,7 +2023,7 @@
                             <textarea id="message" name="message" rows="4" placeholder="Any specific topics you need help with? Preferred time for tutoring sessions?"></textarea>
                         </div>
                         
-                        <button type="submit" class="btn" style="width: 100%;">Submit Booking Request</button>
+                        <button type="submit" class="btn" style="width: 100%; background: var(--primary); color: white;">Submit Booking Request</button>
                     </form>
                     
                     <!-- Confirmation Message -->
@@ -1583,20 +2039,20 @@
                 <div class="booking-info">
                     <i class="fas fa-calendar-check"></i>
                     <h3>How It Works</h3>
-                    <p>1. Select your preferred tutorial type</p>
-                    <p>2. For group/mass tutorials: specify number of students, courses, and tutors needed</p>
-                    <p>3. Fill out the booking form with your details</p>
-                    <p>4. Select your level and desired courses</p>
-                    <p>5. Choose preferred tutors (optional)</p>
-                    <p>6. Select how you want to be contacted</p>
-                    <p>7. Submit your request</p>
-                    <p>8. Get instant email confirmation</p>
-                    <p>9. We'll contact you within 24 hours to confirm your booking</p>
+                    <p><i class="fas fa-check-circle"></i> Select your preferred tutorial type</p>
+                    <p><i class="fas fa-check-circle"></i> For group/mass tutorials: specify number of students, courses, and tutors needed</p>
+                    <p><i class="fas fa-check-circle"></i> Fill out the booking form with your details</p>
+                    <p><i class="fas fa-check-circle"></i> Select your level and desired courses</p>
+                    <p><i class="fas fa-check-circle"></i> Choose preferred tutors (optional)</p>
+                    <p><i class="fas fa-check-circle"></i> Select how you want to be contacted</p>
+                    <p><i class="fas fa-check-circle"></i> Submit your request</p>
+                    <p><i class="fas fa-check-circle"></i> Get instant email confirmation</p>
+                    <p><i class="fas fa-check-circle"></i> We'll contact you within 24 hours to confirm your booking</p>
                     
-                    <div style="margin-top: 30px; padding: 20px; background: white; border-radius: 8px; box-shadow: 0 3px 10px rgba(0,0,0,0.1);">
-                        <h4><i class="fas fa-envelope" style="color: var(--primary);"></i> Email Confirmation</h4>
+                    <div style="margin-top: 30px; padding: 25px; background: rgba(255,255,255,0.1); border-radius: 12px; backdrop-filter: blur(10px);">
+                        <h4><i class="fas fa-envelope"></i> Email Confirmation</h4>
                         <p>After booking, you'll receive an email with:</p>
-                        <ul style="text-align: left; margin-top: 10px; padding-left: 20px;">
+                        <ul style="text-align: left; margin-top: 15px; padding-left: 20px;">
                             <li>Booking details summary</li>
                             <li>Expected response time</li>
                             <li>Contact information for urgent queries</li>
@@ -1605,7 +2061,7 @@
                     </div>
 
                     <!-- WhatsApp Button -->
-                    <button onclick="sendWhatsAppMessage()" class="btn" style="background-color: #25D366; margin-top: 20px; width: 100%;">
+                    <button onclick="sendWhatsAppMessage()" class="btn" style="background-color: #25D366; margin-top: 25px; width: 100%;">
                         <i class="fab fa-whatsapp"></i> Message Absamie on WhatsApp
                     </button>
                 </div>
@@ -1619,22 +2075,22 @@
             <div class="footer-content">
                 <div class="footer-section">
                     <h3>Genius Point Academy</h3>
-                    <p>Find Your Academic Breakthrough at FUTA's Premier Tutorial Community</p>
+                    <p>Find Your Academic Breakthrough at FUTA's Premier Tutorial Community. We provide personalized tutoring services to help students excel in their academic journey.</p>
                     <div class="social-links">
-                        <!-- Facebook link: <a href="YOUR_FACEBOOK_URL"><i class="fab fa-facebook-f"></i></a> -->
-                        <!-- Twitter link: <a href="YOUR_TWITTER_URL"><i class="fab fa-twitter"></i></a> -->
-                        <!-- Instagram link: <a href="YOUR_INSTAGRAM_URL"><i class="fab fa-instagram"></i></a> -->
-                        <!-- LinkedIn link: <a href="YOUR_LINKEDIN_URL"><i class="fab fa-linkedin-in"></i></a> -->
+                        <a href="#" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" title="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" title="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
                     </div>
                 </div>
                 <div class="footer-section">
                     <h3>Quick Links</h3>
                     <ul>
-                        <li><a href="#home">Home</a></li>
-                        <li><a href="#about">About Us</a></li>
-                        <li><a href="#tutors">Our Tutors</a></li>
-                        <li><a href="#courses">Courses</a></li>
-                        <li><a href="#booking">Book a Tutor</a></li>
+                        <li><a href="#home"><i class="fas fa-chevron-right"></i> Home</a></li>
+                        <li><a href="#about"><i class="fas fa-chevron-right"></i> About Us</a></li>
+                        <li><a href="#tutors"><i class="fas fa-chevron-right"></i> Our Tutors</a></li>
+                        <li><a href="#courses"><i class="fas fa-chevron-right"></i> Courses</a></li>
+                        <li><a href="#booking"><i class="fas fa-chevron-right"></i> Book a Tutor</a></li>
                     </ul>
                 </div>
                 <div class="footer-section">
@@ -1668,6 +2124,16 @@
         // Mobile Menu Toggle
         document.querySelector('.mobile-menu').addEventListener('click', function() {
             document.querySelector('.nav-menu').classList.toggle('active');
+        });
+
+        // Header scroll effect
+        window.addEventListener('scroll', function() {
+            const header = document.getElementById('header');
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
         });
 
         // Level Tabs
@@ -1714,7 +2180,7 @@
                 { code: 'BIO 202', name: 'Biology Course II', tutors: ['Favour'] },
                 { code: 'MCB 201', name: 'Microbiology Course I', tutors: ['Favour'] },
                 { code: 'MCB 202', name: 'Microbiology Course II', tutors: ['Favour'] },
-                { code: 'CHE 205', name: 'Chemical Engineering Thermodynamics', tutors: [] }
+                { code: 'CHE 205', name: 'Physical Chemistry I', tutors: [] }
             ],
             '300': [
                 { code: 'EEE 305', name: 'Electrical Machines', tutors: ['E-Simple'] },
@@ -2026,7 +2492,7 @@
                 const targetElement = document.querySelector(targetId);
                 if (targetElement) {
                     window.scrollTo({
-                        top: targetElement.offsetTop - 80,
+                        top: targetElement.offsetTop - 100,
                         behavior: 'smooth'
                     });
                     
@@ -2035,6 +2501,33 @@
                 }
             });
         });
+
+        // Add animation on scroll
+        function animateOnScroll() {
+            const elements = document.querySelectorAll('.tutor-card, .course-card, .learning-option, .mission, .vision');
+            
+            elements.forEach(element => {
+                const elementTop = element.getBoundingClientRect().top;
+                const elementVisible = 150;
+                
+                if (elementTop < window.innerHeight - elementVisible) {
+                    element.style.opacity = "1";
+                    element.style.transform = "translateY(0)";
+                }
+            });
+        }
+
+        // Set initial state for animated elements
+        document.querySelectorAll('.tutor-card, .course-card, .learning-option, .mission, .vision').forEach(element => {
+            element.style.opacity = "0";
+            element.style.transform = "translateY(20px)";
+            element.style.transition = "opacity 0.6s ease, transform 0.6s ease";
+        });
+
+        // Run animation on scroll
+        window.addEventListener('scroll', animateOnScroll);
+        // Run once on load
+        window.addEventListener('load', animateOnScroll);
     </script>
 </body>
 </html>
@@ -2042,25 +2535,25 @@
 <!-- 
 LINE NUMBER GUIDE FOR FUTURE UPDATES:
 
-- Logo image: Line 109
-- Hero background image: Line 143
-- About section collage image: Line 253
-- Add new tutor: Lines 315-380 (follow tutor card structure)
-- E-Simple photo: Line 319
-- Muzzle photo: Line 340 (currently placeholder icon)
-- O'yemi photo: Line 361
-- Absamie photo: Line 382
-- Physiobrain photo: Line 410
-- Davero photo: Line 438
-- Favour photo: Line 466
-- Tomilayo photo: Line 494
-- Update tutor info: Lines 325-380 (each tutor card section)
-- Update courses: Lines 550-750 (courses section)
-- Add new course: Lines 550-750 (follow course card structure)
-- Update course titles: Lines 560, 570, etc. (each course card)
-- Booking form updates: Lines 815-950
-- FormSubmit email: Line 820
-- WhatsApp number: Line 824, 1065
-- Update contact info: Lines 1085-1095
-- Add social media links: Lines 1078-1081
+- Logo image: Line 119
+- Hero background image: Line 159
+- About section collage image: Line 289
+- Add new tutor: Lines 351-416 (follow tutor card structure)
+- E-Simple photo: Line 355
+- Muzzle photo: Line 376 (currently placeholder icon)
+- O'yemi photo: Line 397
+- Absamie photo: Line 418
+- Physiobrain photo: Line 446
+- Davero photo: Line 474
+- Favour photo: Line 502
+- Tomilayo photo: Line 530
+- Update tutor info: Lines 361-416 (each tutor card section)
+- Update courses: Lines 586-786 (courses section)
+- Add new course: Lines 586-786 (follow course card structure)
+- Update course titles: Lines 596, 606, etc. (each course card)
+- Booking form updates: Lines 851-986
+- FormSubmit email: Line 856
+- WhatsApp number: Line 860, 1101
+- Update contact info: Lines 1121-1131
+- Social media links: Lines 1114-1117
 -->
