@@ -441,6 +441,86 @@
             margin-bottom: 15px;
         }
 
+        /* Booking Type Options */
+        .booking-type-options {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+            margin-top: 10px;
+        }
+
+        .booking-type-option {
+            display: block;
+            cursor: pointer;
+        }
+
+        .booking-type-option input {
+            display: none;
+        }
+
+        .booking-type-option .option-content {
+            padding: 20px 15px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            text-align: center;
+            transition: all 0.3s;
+            background-color: white;
+        }
+
+        .booking-type-option .option-content i {
+            font-size: 2rem;
+            color: var(--primary);
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        .booking-type-option .option-content span {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        .booking-type-option .option-content small {
+            color: #666;
+            font-size: 0.8rem;
+        }
+
+        .booking-type-option input:checked + .option-content {
+            border-color: var(--primary);
+            background-color: rgba(26, 75, 140, 0.05);
+            box-shadow: 0 0 0 2px rgba(26, 75, 140, 0.2);
+        }
+
+        .booking-type-option:hover .option-content {
+            border-color: var(--primary);
+        }
+
+        /* Form Text Helper */
+        .form-text {
+            display: block;
+            margin-top: 5px;
+            color: #666;
+            font-size: 0.85rem;
+        }
+
+        /* Dynamic Form Elements */
+        .course-selection, .tutor-selection {
+            margin-bottom: 15px;
+        }
+
+        .course-selection label, .tutor-selection label {
+            font-weight: 500;
+            color: var(--primary);
+        }
+
+        .dynamic-field-group {
+            margin-bottom: 20px;
+            padding: 15px;
+            background-color: #f9f9f9;
+            border-radius: 5px;
+            border-left: 3px solid var(--primary);
+        }
+
         /* New Contact Preference Styles */
         .contact-preferences {
             display: grid;
@@ -864,9 +944,20 @@
                     <div class="tutor-info">
                         <h3>Muzzle</h3>
                         <div class="full-name">Mathematics Specialist</div>
+                        <div class="tutor-level-dept">400L | Electrical & Electronics Engineering</div><div class="tutor-level-dept">400L | Mechanical Engineering</div>
                         <div class="tutor-level-dept">Experienced Tutor</div>
                         <p>Mathematics specialist focused on making complex mathematical concepts accessible and understandable for students at all levels.</p>
-                        <div class="courses-list">
+                        <div class="tutor-contact">
+                            <div class="contact-item">
+                                <i class="fas fa-envelope"></i>
+                               <!-- <span>emmanuelamusan732@gmail.com</span> -->
+                            </div>
+                            <div class="contact-item">
+                                <i class="fab fa-whatsapp"></i>
+                                <span>08127064566</span>
+                            </div>
+                        </div>
+                            <div class="courses-list">
                             <span class="course-tag">MTS 101</span>
                             <span class="course-tag">PHY 101</span>
                             <span class="course-tag">PHY 103</span>
@@ -1042,9 +1133,19 @@
                     <div class="tutor-info">
                         <h3>Tomi</h3>
                         <div class="full-name">Asotun Oluwatomilayo</div>
-                        <div class="tutor-level-dept">Enthusiastic Science Tutor</div>
+                        <div class="tutor-level-dept">200L | Electrical & Electronics Engineering</div>
                         <p>Committed and enthusiastic tutor with a strong passion for making science simple, practical and engaging. Dedicated to simplifying complex concepts, inspiring curiosity and helping students build confidence.</p>
-                        <div class="courses-list">
+                        <div class="tutor-contact">
+                            <div class="contact-item">
+                                <i class="fas fa-envelope"></i>
+                                <span>asotunoluwatomilayo@gmail.com</span>
+                            </div>
+                            <div class="contact-item">
+                                <i class="fab fa-whatsapp"></i>
+                                <span>09035610143</span>
+                            </div>
+                        </div>
+                            <div class="courses-list">
                             <span class="course-tag">MTS 101</span>
                             <span class="course-tag">MTS 102</span>
                             <span class="course-tag">MTS 104</span>
@@ -1221,47 +1322,42 @@
                 </div>
                 
                 <div class="course-card">
-                    <h3>MME 201 <span>Introduction to Metallurgical Engineering</span></h3>
+                    <h3>MME 201 <span>Science of Materials</span></h3>
                     <div class="tutors-list">
                         <span class="tutor-tag">O'yemi</span>
                     </div>
                 </div>
 
                 <div class="course-card">
-                    <h3>MEE 201 <span>Science of Materials</span></h3>
-                    <p>No tutors currently available</p>
-                </div>
-
-                <div class="course-card">
-                    <h3>BIO 201 <span>Biology Course I</span></h3>
+                    <h3>BIO 201 <span>Introduction to Genetics I</span></h3>
                     <div class="tutors-list">
                         <span class="tutor-tag">Favour</span>
                     </div>
                 </div>
 
                 <div class="course-card">
-                    <h3>BIO 202 <span>Biology Course II</span></h3>
+                    <h3>BIO 202 <span>Introduction to Genetics II</span></h3>
                     <div class="tutors-list">
                         <span class="tutor-tag">Favour</span>
                     </div>
                 </div>
 
                 <div class="course-card">
-                    <h3>MCB 201 <span>Microbiology Course I</span></h3>
+                    <h3>MCB 201 <span>General Microbiology I</span></h3>
                     <div class="tutors-list">
                         <span class="tutor-tag">Favour</span>
                     </div>
                 </div>
 
                 <div class="course-card">
-                    <h3>MCB 202 <span>Microbiology Course II</span></h3>
+                    <h3>MCB 202 <span>General Microbiology II</span></h3>
                     <div class="tutors-list">
                         <span class="tutor-tag">Favour</span>
                     </div>
                 </div>
                 
                 <div class="course-card">
-                    <h3>CHE 205 <span>Chemical Engineering Thermodynamics</span></h3>
+                    <h3>CHE 205 <span>Physical Chemistry I</span></h3>
                     <p>No tutors currently available</p>
                 </div>
             </div>
@@ -1326,6 +1422,69 @@
                         <input type="hidden" name="_autoresponse" value="Thank you for booking a tutor with Genius Point Academy! We have received your request and will contact you within 24 hours to confirm your session. For urgent inquiries, message us on WhatsApp: +2347038248528">
                         <input type="hidden" name="_next" value="https://futafreshersguide.github.io/geniuspointacademytesting/">
 
+                        <!-- Booking Type Selection -->
+                        <div class="form-group">
+                            <label for="bookingType">What are you booking for?</label>
+                            <div class="booking-type-options">
+                                <label class="booking-type-option">
+                                    <input type="radio" name="booking_type" value="personal" required>
+                                    <div class="option-content">
+                                        <i class="fas fa-user"></i>
+                                        <span>Personal Tutorial</span>
+                                        <small>1-on-1 session</small>
+                                    </div>
+                                </label>
+                                <label class="booking-type-option">
+                                    <input type="radio" name="booking_type" value="group">
+                                    <div class="option-content">
+                                        <i class="fas fa-users"></i>
+                                        <span>Group Tutorial</span>
+                                        <small>2-5 students</small>
+                                    </div>
+                                </label>
+                                <label class="booking-type-option">
+                                    <input type="radio" name="booking_type" value="mass">
+                                    <div class="option-content">
+                                        <i class="fas fa-chalkboard-teacher"></i>
+                                        <span>Mass Tutorial</span>
+                                        <small>6+ students</small>
+                                    </div>
+                                </label>
+                            </div>
+                        </div>
+
+                        <!-- Student Count (Conditional) -->
+                        <div class="form-group" id="studentCountGroup" style="display: none;">
+                            <label for="studentCount">Number of Students</label>
+                            <input type="number" id="studentCount" name="student_count" min="1" max="50">
+                            <small id="studentCountHelp" class="form-text"></small>
+                        </div>
+
+                        <!-- Number of Courses (Conditional for Group/Mass) -->
+                        <div class="form-group" id="courseCountGroup" style="display: none;">
+                            <label for="courseCount">How many courses do you want to book for?</label>
+                            <select id="courseCount" name="course_count">
+                                <option value="">Select number of courses</option>
+                                <option value="1">1 Course</option>
+                                <option value="2">2 Courses</option>
+                                <option value="3">3 Courses</option>
+                                <option value="4">4 Courses</option>
+                                <option value="5">5+ Courses</option>
+                            </select>
+                        </div>
+
+                        <!-- Number of Tutors (Conditional for Group/Mass) -->
+                        <div class="form-group" id="tutorCountGroup" style="display: none;">
+                            <label for="tutorCount">How many tutors do you need?</label>
+                            <select id="tutorCount" name="tutor_count">
+                                <option value="">Select number of tutors</option>
+                                <option value="1">1 Tutor</option>
+                                <option value="2">2 Tutors</option>
+                                <option value="3">3 Tutors</option>
+                                <option value="4">4+ Tutors</option>
+                            </select>
+                        </div>
+
                         <div class="form-group">
                             <label for="fullName">Full Name</label>
                             <input type="text" id="fullName" name="name" required>
@@ -1353,19 +1512,27 @@
                                 <option value="500">500 Level</option>
                             </select>
                         </div>
-                        <div class="form-group">
-                            <label for="course">Course</label>
-                            <select id="course" name="course" required>
-                                <option value="">Select Course</option>
-                                <!-- Options will be populated based on level selection -->
-                            </select>
+                        
+                        <!-- Course Selection (Dynamic based on course count) -->
+                        <div id="courseSelectionContainer">
+                            <div class="form-group course-selection">
+                                <label for="course1">Course</label>
+                                <select id="course1" name="course[]" required>
+                                    <option value="">Select Course</option>
+                                    <!-- Options will be populated based on level selection -->
+                                </select>
+                            </div>
                         </div>
-                        <div class="form-group">
-                            <label for="tutor">Preferred Tutor</label>
-                            <select id="tutor" name="preferred_tutor">
-                                <option value="">Any Available Tutor</option>
-                                <!-- Options will be populated based on course selection -->
-                            </select>
+
+                        <!-- Tutor Selection (Dynamic based on tutor count) -->
+                        <div id="tutorSelectionContainer">
+                            <div class="form-group tutor-selection">
+                                <label for="tutor1">Preferred Tutor</label>
+                                <select id="tutor1" name="preferred_tutor[]">
+                                    <option value="">Any Available Tutor</option>
+                                    <!-- Options will be populated based on course selection -->
+                                </select>
+                            </div>
                         </div>
                         
                         <!-- Contact Preference Section -->
@@ -1416,13 +1583,15 @@
                 <div class="booking-info">
                     <i class="fas fa-calendar-check"></i>
                     <h3>How It Works</h3>
-                    <p>1. Fill out the booking form with your details</p>
-                    <p>2. Select your level and desired course</p>
-                    <p>3. Choose a preferred tutor (optional)</p>
-                    <p>4. Select how you want to be contacted</p>
-                    <p>5. Submit your request</p>
-                    <p>6. Get instant email confirmation</p>
-                    <p>7. We'll contact you within 24 hours to confirm your booking</p>
+                    <p>1. Select your preferred tutorial type</p>
+                    <p>2. For group/mass tutorials: specify number of students, courses, and tutors needed</p>
+                    <p>3. Fill out the booking form with your details</p>
+                    <p>4. Select your level and desired courses</p>
+                    <p>5. Choose preferred tutors (optional)</p>
+                    <p>6. Select how you want to be contacted</p>
+                    <p>7. Submit your request</p>
+                    <p>8. Get instant email confirmation</p>
+                    <p>9. We'll contact you within 24 hours to confirm your booking</p>
                     
                     <div style="margin-top: 30px; padding: 20px; background: white; border-radius: 8px; box-shadow: 0 3px 10px rgba(0,0,0,0.1);">
                         <h4><i class="fas fa-envelope" style="color: var(--primary);"></i> Email Confirmation</h4>
@@ -1564,47 +1733,188 @@
         // Update course options based on selected level
         document.getElementById('level').addEventListener('change', function() {
             const level = this.value;
-            const courseSelect = document.getElementById('course');
-            const tutorSelect = document.getElementById('tutor');
+            const courseSelects = document.querySelectorAll('select[name="course[]"]');
             
-            // Clear previous options
-            courseSelect.innerHTML = '<option value="">Select Course</option>';
-            tutorSelect.innerHTML = '<option value="">Any Available Tutor</option>';
-            
-            if (level && coursesData[level]) {
-                // Add courses for selected level
-                coursesData[level].forEach(course => {
-                    const option = document.createElement('option');
-                    option.value = course.code;
-                    option.textContent = `${course.code} - ${course.name}`;
-                    courseSelect.appendChild(option);
-                });
-            }
+            courseSelects.forEach(select => {
+                select.innerHTML = '<option value="">Select Course</option>';
+                
+                if (level && coursesData[level]) {
+                    coursesData[level].forEach(course => {
+                        const option = document.createElement('option');
+                        option.value = course.code;
+                        option.textContent = `${course.code} - ${course.name}`;
+                        select.appendChild(option);
+                    });
+                }
+            });
         });
 
         // Update tutor options based on selected course
-        document.getElementById('course').addEventListener('change', function() {
-            const level = document.getElementById('level').value;
-            const courseCode = this.value;
-            const tutorSelect = document.getElementById('tutor');
-            
-            // Clear previous options except the first one
-            tutorSelect.innerHTML = '<option value="">Any Available Tutor</option>';
-            
-            if (level && courseCode && coursesData[level]) {
-                const selectedCourse = coursesData[level].find(course => course.code === courseCode);
+        document.addEventListener('change', function(e) {
+            if (e.target.name === 'course[]') {
+                const level = document.getElementById('level').value;
+                const courseCode = e.target.value;
+                const tutorSelectId = e.target.id.replace('course', 'tutor');
+                const tutorSelect = document.getElementById(tutorSelectId);
                 
-                if (selectedCourse && selectedCourse.tutors.length > 0) {
-                    // Add tutors for selected course
-                    selectedCourse.tutors.forEach(tutor => {
-                        const option = document.createElement('option');
-                        option.value = tutor;
-                        option.textContent = tutor;
-                        tutorSelect.appendChild(option);
-                    });
+                if (tutorSelect) {
+                    tutorSelect.innerHTML = '<option value="">Any Available Tutor</option>';
+                    
+                    if (level && courseCode && coursesData[level]) {
+                        const selectedCourse = coursesData[level].find(course => course.code === courseCode);
+                        
+                        if (selectedCourse && selectedCourse.tutors.length > 0) {
+                            selectedCourse.tutors.forEach(tutor => {
+                                const option = document.createElement('option');
+                                option.value = tutor;
+                                option.textContent = tutor;
+                                tutorSelect.appendChild(option);
+                            });
+                        }
+                    }
                 }
             }
         });
+
+        // Booking Type Selection
+        document.querySelectorAll('input[name="booking_type"]').forEach(radio => {
+            radio.addEventListener('change', function() {
+                const studentCountGroup = document.getElementById('studentCountGroup');
+                const courseCountGroup = document.getElementById('courseCountGroup');
+                const tutorCountGroup = document.getElementById('tutorCountGroup');
+                const studentCountInput = document.getElementById('studentCount');
+                const studentCountHelp = document.getElementById('studentCountHelp');
+                
+                if (this.value === 'personal') {
+                    // Hide all group-specific fields for personal tutorials
+                    studentCountGroup.style.display = 'none';
+                    courseCountGroup.style.display = 'none';
+                    tutorCountGroup.style.display = 'none';
+                    
+                    // Reset values
+                    studentCountInput.value = '1';
+                    studentCountInput.required = false;
+                    
+                    // Reset to single course/tutor selection
+                    resetToSingleSelection();
+                    
+                } else if (this.value === 'group' || this.value === 'mass') {
+                    // Show all group-specific fields
+                    studentCountGroup.style.display = 'block';
+                    courseCountGroup.style.display = 'block';
+                    tutorCountGroup.style.display = 'block';
+                    
+                    // Set appropriate validation
+                    if (this.value === 'group') {
+                        studentCountInput.min = 2;
+                        studentCountInput.max = 5;
+                        studentCountHelp.textContent = 'Group tutorials are for 2-5 students';
+                    } else if (this.value === 'mass') {
+                        studentCountInput.min = 6;
+                        studentCountInput.max = 50;
+                        studentCountHelp.textContent = 'Mass tutorials are for 6+ students';
+                    }
+                    
+                    studentCountInput.value = '';
+                    studentCountInput.required = true;
+                }
+            });
+        });
+
+        // Function to reset to single course/tutor selection
+        function resetToSingleSelection() {
+            const courseContainer = document.getElementById('courseSelectionContainer');
+            const tutorContainer = document.getElementById('tutorSelectionContainer');
+            
+            courseContainer.innerHTML = `
+                <div class="form-group course-selection">
+                    <label for="course1">Course</label>
+                    <select id="course1" name="course[]" required>
+                        <option value="">Select Course</option>
+                    </select>
+                </div>
+            `;
+            
+            tutorContainer.innerHTML = `
+                <div class="form-group tutor-selection">
+                    <label for="tutor1">Preferred Tutor</label>
+                    <select id="tutor1" name="preferred_tutor[]">
+                        <option value="">Any Available Tutor</option>
+                    </select>
+                </div>
+            `;
+            
+            // Repopulate course options if level is selected
+            const level = document.getElementById('level').value;
+            if (level) {
+                populateCourseOptions('course1', level);
+            }
+        }
+
+        // Update course count selection (for group/mass tutorials)
+        document.getElementById('courseCount').addEventListener('change', function() {
+            const courseCount = parseInt(this.value);
+            const container = document.getElementById('courseSelectionContainer');
+            
+            // Clear previous course selections
+            container.innerHTML = '';
+            
+            for (let i = 1; i <= courseCount; i++) {
+                const courseGroup = document.createElement('div');
+                courseGroup.className = 'form-group course-selection';
+                courseGroup.innerHTML = `
+                    <label for="course${i}">Course ${i}</label>
+                    <select id="course${i}" name="course[]" required>
+                        <option value="">Select Course</option>
+                    </select>
+                `;
+                container.appendChild(courseGroup);
+                
+                // Populate courses based on selected level
+                const level = document.getElementById('level').value;
+                if (level) {
+                    populateCourseOptions(`course${i}`, level);
+                }
+            }
+        });
+
+        // Update tutor count selection (for group/mass tutorials)
+        document.getElementById('tutorCount').addEventListener('change', function() {
+            const tutorCount = parseInt(this.value);
+            const container = document.getElementById('tutorSelectionContainer');
+            
+            // Clear previous tutor selections
+            container.innerHTML = '';
+            
+            for (let i = 1; i <= tutorCount; i++) {
+                const tutorGroup = document.createElement('div');
+                tutorGroup.className = 'form-group tutor-selection';
+                tutorGroup.innerHTML = `
+                    <label for="tutor${i}">Preferred Tutor ${i}</label>
+                    <select id="tutor${i}" name="preferred_tutor[]">
+                        <option value="">Any Available Tutor</option>
+                    </select>
+                `;
+                container.appendChild(tutorGroup);
+            }
+        });
+
+        // Function to populate course options
+        function populateCourseOptions(selectId, level) {
+            const courseSelect = document.getElementById(selectId);
+            if (courseSelect) {
+                courseSelect.innerHTML = '<option value="">Select Course</option>';
+                
+                if (level && coursesData[level]) {
+                    coursesData[level].forEach(course => {
+                        const option = document.createElement('option');
+                        option.value = course.code;
+                        option.textContent = `${course.code} - ${course.name}`;
+                        courseSelect.appendChild(option);
+                    });
+                }
+            }
+        }
 
         // Contact preference selection
         document.querySelectorAll('.contact-option').forEach(option => {
@@ -1617,6 +1927,24 @@
 
         // Form submission with FormSubmit
         document.getElementById('bookingForm').addEventListener('submit', function(e) {
+            // Validate student count based on booking type
+            const bookingType = document.querySelector('input[name="booking_type"]:checked');
+            const studentCount = document.getElementById('studentCount').value;
+            
+            if (bookingType) {
+                if (bookingType.value === 'group' && (studentCount < 2 || studentCount > 5)) {
+                    e.preventDefault();
+                    alert('Group tutorials must have between 2-5 students');
+                    return;
+                }
+                
+                if (bookingType.value === 'mass' && studentCount < 6) {
+                    e.preventDefault();
+                    alert('Mass tutorials must have at least 6 students');
+                    return;
+                }
+            }
+            
             // Let FormSubmit handle the submission naturally
             // We'll just show the confirmation message
             
@@ -1663,7 +1991,7 @@
         // WhatsApp direct message functionality
         function sendWhatsAppMessage() {
             const phone = '+2347038248528'; // Absamie's WhatsApp number
-            const course = document.getElementById('course').value || 'a course';
+            const course = document.getElementById('course1').value || 'a course';
             const level = document.getElementById('level').value || 'your level';
             const message = `Hello GPA! I'm interested in booking a tutor for ${course} (${level} Level).`;
             const url = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
@@ -1730,8 +2058,9 @@ LINE NUMBER GUIDE FOR FUTURE UPDATES:
 - Update courses: Lines 550-750 (courses section)
 - Add new course: Lines 550-750 (follow course card structure)
 - Update course titles: Lines 560, 570, etc. (each course card)
-- Update FormSubmit email: Line 815
-- Update WhatsApp number: Line 819, 1065
+- Booking form updates: Lines 815-950
+- FormSubmit email: Line 820
+- WhatsApp number: Line 824, 1065
 - Update contact info: Lines 1085-1095
 - Add social media links: Lines 1078-1081
 -->
