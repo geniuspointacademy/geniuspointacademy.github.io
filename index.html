@@ -312,15 +312,12 @@
             position: relative;
         }
 
-    
         .about-image img {
             width: 100%;
             border-radius: 15px;
             box-shadow: var(--shadow);
             transition: transform 0.5s ease;
         }
-
-    
 
         .mission-vision {
             display: grid;
@@ -1193,64 +1190,80 @@
                 grid-template-columns: 1fr 1fr;
             }
         }
-         /* Fixed Position Button */
-    .whatsapp-community-btn {
-        position: fixed;
-        bottom: 20px;
-        right: 20px;
-        z-index: 1000;
-        background-color: #25D366; /* WhatsApp Green */
-        color: white;
-        padding: 15px 20px;
-        border-radius: 30px;
-        text-decoration: none;
-        font-weight: bold;
-        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-        display: flex;
-        align-items: center;
-        gap: 10px;
-        transition: all 0.3s ease;
-    }
 
-    /* Pulse Animation to Grab Attention */
-    @keyframes pulse {
-        0% { transform: scale(1); }
-        70% { transform: scale(1.05); box-shadow: 0 0 0 10px rgba(37, 211, 102, 0); }
-        100% { transform: scale(1); box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); }
-    }
-    .whatsapp-community-btn {
-        animation: pulse 2s infinite;
-    }
+        /* Fixed Position Button */
+        .whatsapp-community-btn {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 1000;
+            background-color: #25D366;
+            color: white;
+            padding: 15px 20px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transition: all 0.3s ease;
+        }
 
-    /* Button Icon */
-    .whatsapp-icon {
-        width: 24px;
-        height: 24px;
-        fill: currentColor;
-    }
+        /* Pulse Animation to Grab Attention */
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            70% { transform: scale(1.05); box-shadow: 0 0 0 10px rgba(37, 211, 102, 0); }
+            100% { transform: scale(1); box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); }
+        }
+        .whatsapp-community-btn {
+            animation: pulse 2s infinite;
+        }
 
-    /* Hover Effect */
-    .whatsapp-community-btn:hover {
-        background-color: #128C7E; /* Darker WhatsApp Green */
-        transform: translateY(-3px);
-        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
-        animation-play-state: paused; /* Pauses pulse on hover */
-    }  
+        /* Button Icon */
+        .whatsapp-icon {
+            width: 24px;
+            height: 24px;
+            fill: currentColor;
+        }
+
+        /* Hover Effect */
+        .whatsapp-community-btn:hover {
+            background-color: #128C7E;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+            animation-play-state: paused;
+        }
+
+        /* Loading spinner */
+        .spinner {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 3px solid rgba(255,255,255,.3);
+            border-radius: 50%;
+            border-top-color: #fff;
+            animation: spin 1s ease-in-out infinite;
+            margin-right: 10px;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
     </style>
 </head>
 <body>
     <!-- The Animated WhatsApp Button -->
-<a href="https://chat.whatsapp.com/EfRqG1ekcym0MflO4MiEFj" 
-   target="_blank" 
-   class="whatsapp-community-btn" 
-   aria-label="Join our WhatsApp community">
-    <!-- whatsapp icon-->
-    <svg class="whatsapp-icon" viewBox="0 0 24 24">
-        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.149-.67.15-.197.297-.767.967-.94 1.165-.173.199-.347.223-.644.075-.297-.15-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.521.149-.173.198-.298.298-.497.099-.198.05-.371-.025-.521-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.76.982.998-3.675-.236-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.9 6.994c-.004 5.45-4.438 9.88-9.888 9.88m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.333.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.304-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.333 11.893-11.893 0-3.18-1.24-6.162-3.495-8.411"/>
-    </svg>
-    
-    Join Our Community
-</a>
+    <a href="https://chat.whatsapp.com/EfRqG1ekcym0MflO4MiEFj" 
+       target="_blank" 
+       class="whatsapp-community-btn" 
+       aria-label="Join our WhatsApp community">
+        <svg class="whatsapp-icon" viewBox="0 0 24 24">
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.149-.67.15-.197.297-.767.967-.94 1.165-.173.199-.347.223-.644.075-.297-.15-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.521.149-.173.198-.298.298-.497.099-.198.05-.371-.025-.521-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.76.982.998-3.675-.236-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.9 6.994c-.004 5.45-4.438 9.88-9.888 9.88m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.333.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.304-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.333 11.893-11.893 0-3.18-1.24-6.162-3.495-8.411"/>
+        </svg>
+        Join Our Community
+    </a>
+
     <!-- Header -->
     <header id="header">
         <div class="container">
@@ -1740,7 +1753,7 @@
                     <div class="tutors-list">
                         <span class="tutor-tag">Favour</span>
                     </div>
-                </div
+                </div>
 
                 <div class="course-card">
                     <h3>MCB 201 <span>General Microbiology I</span></h3>
@@ -1809,13 +1822,13 @@
             
             <div class="booking-container">
                 <div class="booking-form">
-                    <form action="https://formsubmit.co/academygeniuspoint@gmail.com" method="POST" id="bookingForm">
+                    <form id="bookingForm">
                         <!-- FormSubmit Hidden Fields -->
                         <input type="hidden" name="_subject" value="New Tutor Booking - Genius Point Academy">
                         <input type="hidden" name="_template" value="table">
                         <input type="hidden" name="_captcha" value="false">
                         <input type="hidden" name="_autoresponse" value="Thank you for booking a tutor with Genius Point Academy! We have received your request and will contact you within 24 hours to confirm your session. For urgent inquiries, message us on WhatsApp: +2347038248528">
-                        <input type="hidden" name="_next" value="https://futafreshersguide.github.io/geniuspointacademytesting/">
+                        <input type="hidden" name="_next" value="#booking">
 
                         <!-- Booking Type Selection -->
                         <div class="form-group">
@@ -1834,7 +1847,7 @@
                                     <div class="option-content">
                                         <i class="fas fa-users"></i>
                                         <span>Group Tutorial</span>
-                                        <small>2-10 students</small>
+                                        <small>2-5 students</small>
                                     </div>
                                 </label>
                                 <label class="booking-type-option">
@@ -1842,7 +1855,7 @@
                                     <div class="option-content">
                                         <i class="fas fa-chalkboard-teacher"></i>
                                         <span>Mass Tutorial</span>
-                                        <small>11+ students</small>
+                                        <small>6+ students</small>
                                     </div>
                                 </label>
                             </div>
@@ -1962,7 +1975,9 @@
                             <textarea id="message" name="message" rows="4" placeholder="Any specific topics you need help with? Preferred time for tutoring sessions?"></textarea>
                         </div>
                         
-                        <button type="submit" class="btn" style="width: 100%; background: var(--primary); color: white;">Submit Booking Request</button>
+                        <button type="submit" class="btn" id="submitBtn" style="width: 100%; background: var(--primary); color: white;">
+                            Submit Booking Request
+                        </button>
                     </form>
                     
                     <!-- Confirmation Message -->
@@ -2053,7 +2068,7 @@
             <div style="text-align: center; padding: 20px;">
                 <i class="fas fa-check-circle" style="font-size: 4rem; color: var(--success); margin-bottom: 20px;"></i>
                 <h2>Booking Submitted Successfully!</h2>
-                <p id="modalMessage">Thank you for your booking request. We will contact you within 24 hours to confirm your session.</p>
+                <p id="modalMessage">Thank you for your booking request. We have received your request and will contact you within 24 hours to confirm your session.</p>
                 <button class="btn" style="margin-top: 20px;" id="modalClose">Close</button>
             </div>
         </div>
@@ -2203,12 +2218,12 @@
                     // Set appropriate validation
                     if (this.value === 'group') {
                         studentCountInput.min = 2;
-                        studentCountInput.max = 10;
-                        studentCountHelp.textContent = 'Group tutorials are for 2-10 students';
+                        studentCountInput.max = 5;
+                        studentCountHelp.textContent = 'Group tutorials are for 2-5 students';
                     } else if (this.value === 'mass') {
-                        studentCountInput.min = 11;
+                        studentCountInput.min = 6;
                         studentCountInput.max = 100;
-                        studentCountHelp.textContent = 'Mass tutorials are for 11+ students';
+                        studentCountHelp.textContent = 'Mass tutorials are for 6+ students';
                     }
                     
                     studentCountInput.value = '';
@@ -2323,13 +2338,14 @@
 
         // Form submission with FormSubmit
         document.getElementById('bookingForm').addEventListener('submit', function(e) {
+            e.preventDefault(); // Prevent default form submission
+            
             // Validate student count based on booking type
             const bookingType = document.querySelector('input[name="booking_type"]:checked');
             const studentCount = document.getElementById('studentCount').value;
             
             if (bookingType) {
                 if (bookingType.value === 'group' && (studentCount < 2 || studentCount > 5)) {
-                    e.preventDefault();
                     alert('Group tutorials must have between 2-5 students');
                     return;
                 }
@@ -2341,47 +2357,66 @@
                 }
             }
             
-            // Let FormSubmit handle the submission naturally
-            // We'll just show the confirmation message
+            // Get form data
+            const form = this;
+            const formData = new FormData(form);
             
-            const userEmail = document.getElementById('email').value;
+            // Show loading state
+            const submitBtn = document.getElementById('submitBtn');
+            const originalText = submitBtn.innerHTML;
+            submitBtn.innerHTML = '<span class="spinner"></span> Submitting...';
+            submitBtn.disabled = true;
             
-            // Show confirmation message immediately
-            document.getElementById('userEmail').textContent = userEmail;
-            document.getElementById('confirmationMessage').classList.add('show');
-            
-            // Update modal message
-            const contactMethods = document.querySelectorAll('input[name="contact_method[]"]:checked');
-            const selectedMethods = Array.from(contactMethods).map(cb => cb.value);
-            let contactMessage = '';
-            
-            if (selectedMethods.includes('whatsapp')) {
-                contactMessage += '• WhatsApp: +2347038248528<br>';
-            }
-            if (selectedMethods.includes('phone')) {
-                contactMessage += '• Phone Call: +2347038248528<br>';
-            }
-            if (selectedMethods.includes('email')) {
-                contactMessage += '• Email: academygeniuspoint@gmail.com<br>';
-            }
-            if (selectedMethods.includes('sms')) {
-                contactMessage += '• SMS: +2347038248528<br>';
-            }
-            
-            document.getElementById('modalMessage').innerHTML = `
-                Thank you for your booking request! We've sent a confirmation email to your inbox.<br><br>
-                <strong>You'll be contacted via:</strong><br>
-                ${contactMessage || 'Your selected contact method(s)'}<br>
-                We'll get back to you within 24 hours to confirm your session.
-            `;
-            
-            // Reset form after submission (FormSubmit will handle the actual submission)
-            setTimeout(() => {
-                document.querySelectorAll('.contact-option').forEach(option => {
-                    option.classList.remove('selected');
-                });
-                document.getElementById('confirmationMessage').classList.remove('show');
-            }, 5000);
+            // Send form data via fetch API
+            fetch('https://formsubmit.co/academygeniuspoint@gmail.com', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => {
+                if (response.ok) {
+                    // Show success message
+                    const userEmail = document.getElementById('email').value;
+                    document.getElementById('userEmail').textContent = userEmail;
+                    document.getElementById('confirmationMessage').classList.add('show');
+                    
+                    // Scroll to confirmation message
+                    document.getElementById('confirmationMessage').scrollIntoView({ behavior: 'smooth' });
+                    
+                    // Reset form after successful submission
+                    form.reset();
+                    
+                    // Reset booking type specific fields
+                    document.getElementById('studentCountGroup').style.display = 'none';
+                    document.getElementById('courseCountGroup').style.display = 'none';
+                    document.getElementById('tutorCountGroup').style.display = 'none';
+                    
+                    // Reset contact preferences
+                    document.querySelectorAll('.contact-option').forEach(option => {
+                        option.classList.remove('selected');
+                        option.querySelector('input').checked = false;
+                    });
+                    
+                    // Reset to single course/tutor selection
+                    resetToSingleSelection();
+                    
+                    // Show success modal
+                    setTimeout(() => {
+                        document.getElementById('successModal').style.display = 'flex';
+                    }, 500);
+                    
+                } else {
+                    throw new Error('Network response was not ok');
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('There was an error submitting your booking. Please try again or contact us directly via WhatsApp.');
+            })
+            .finally(() => {
+                // Restore button state
+                submitBtn.innerHTML = originalText;
+                submitBtn.disabled = false;
+            });
         });
 
         // WhatsApp direct message functionality
@@ -2470,7 +2505,7 @@ LINE NUMBER GUIDE FOR FUTURE UPDATES:
 - About section collage image: Line 289
 - Add new tutor: Lines 351-416 (follow tutor card structure)
 - E-Simple photo: Line 355
-- Muzzle photo: Line 376 (currently placeholder icon)
+- Muzzle photo: Line 376
 - O'yemi photo: Line 397
 - Absamie photo: Line 418
 - Physiobrain photo: Line 446
@@ -2481,9 +2516,9 @@ LINE NUMBER GUIDE FOR FUTURE UPDATES:
 - Update courses: Lines 586-786 (courses section)
 - Add new course: Lines 586-786 (follow course card structure)
 - Update course titles: Lines 596, 606, etc. (each course card)
-- Booking form updates: Lines 851-986
+- Booking form updates: Lines 851-985
 - FormSubmit email: Line 856
-- WhatsApp number: Line 860, 1101
-- Update contact info: Lines 1121-1131
-- Social media links: Lines 1114-1117
+- WhatsApp number: Line 1100, 1241
+- Update contact info: Lines 1261-1271
+- Social media links: Lines 1254-1257
 -->
