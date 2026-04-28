@@ -2727,6 +2727,31 @@
         height: 18px !important;
     }
 }
+        @media (max-width: 768px) {
+    /* Pins the profile icon under the hamburger menu */
+    .header-right {
+        position: absolute !important;
+        top: 65px !important; /* Pushes it down below the 3 lines */
+        right: 20px !important;
+        width: auto !important;
+        justify-content: flex-end !important;
+    }
+          /* Position the dropdown menu so it stays on screen */
+    .user-dropdown {
+        right: 0 !important; /* Align flush with the right side of the icon */
+        left: auto !important; /* Ensure left doesn't interfere */
+        transform: none !important; /* Remove the centering shift */
+        width: 250px; 
+        max-width: 90vw; 
+        top: 100%;
+        margin-top: 15px; 
+    }
+    /* Make sure the container doesn't cause overflow */
+    .user-menu-container {
+        position: relative;
+        display: inline-block; /* Ensure it wraps tightly around the trigger */
+    }  
+}
     </style>
 </head>
 <body>
