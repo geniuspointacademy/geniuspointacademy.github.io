@@ -4130,7 +4130,13 @@
                                 <option value="300">300 Level</option><option value="400">400 Level</option><option value="500">500 Level</option>
                             </select>
                         </div>
-                        
+                        <div class="form-group">
+                            <label for="bookingSemester">Semester</label>
+                            <select id="bookingSemester" name="semester" required>
+                                <option value="first">First Semester</option>
+                                <option value="second">Second Semester</option>
+                            </select>
+                        </div>
                         <div id="courseSelectionContainer">
                             <div class="form-group course-selection">
                                 <label for="course1">Course</label>
@@ -5419,11 +5425,13 @@
             return courseSemFirst.classList.contains('active') ? coursesDataFirst : coursesDataSecond;
         }
 
-        // ============ BOOKING FORM LOGIC ============
-        // Update course options based on selected level
-        document.getElementById('level').addEventListener('change', function() {
-            const level = this.value;
-            const courseData = getActiveCourseData();
+// ============ BOOKING FORM LOGIC ============
+        
+        // Function to update courses based on Level AND Semester
+        function updateBookingCourses() {
+            const level = document.getElementById('level').value;
+            const semester = document.getElementById('bookingSemester').value;
+            const courseData = semester === 'second' ? coursesDataSecond : coursesDataFirst;
             const courseSelects = document.querySelectorAll('select[name="course[]"]');
             
             courseSelects.forEach(select => {
@@ -5445,16 +5453,21 @@
                     if (exists) select.value = currentValue;
                 }
             });
-        });
+        }
+
+        // Listen for changes on BOTH Level and Semester
+        document.getElementById('level').addEventListener('change', updateBookingCourses);
+        document.getElementById('bookingSemester').addEventListener('change', updateBookingCourses);
 
         // Update tutor options based on selected course
         document.addEventListener('change', function(e) {
             if (e.target.name === 'course[]') {
                 const level = document.getElementById('level').value;
+                const semester = document.getElementById('bookingSemester').value;
                 const courseCode = e.target.value;
                 const tutorSelectId = e.target.id.replace('course', 'tutor');
                 const tutorSelect = document.getElementById(tutorSelectId);
-                const courseData = getActiveCourseData();
+                const courseData = semester === 'second' ? coursesDataSecond : coursesDataFirst;
                 
                 if (tutorSelect) {
                     const currentValue = tutorSelect.value;
@@ -5589,10 +5602,11 @@
                 container.appendChild(tutorGroup);
             }
         });
-
-        function populateCourseOptions(selectId, level) {
+function populateCourseOptions(selectId, level) {
             const courseSelect = document.getElementById(selectId);
-            const courseData = getActiveCourseData();
+            const semester = document.getElementById('bookingSemester') ? document.getElementById('bookingSemester').value : 'first';
+            const courseData = semester === 'second' ? coursesDataSecond : coursesDataFirst;
+            
             if (courseSelect && courseData[level]) {
                 courseSelect.innerHTML = '<option value="">Select Course</option>';
                 courseData[level].forEach(course => {
@@ -5603,7 +5617,6 @@
                 });
             }
         }
-
         // Contact preference selection
         document.querySelectorAll('.contact-option').forEach(option => {
             option.addEventListener('click', function() {
