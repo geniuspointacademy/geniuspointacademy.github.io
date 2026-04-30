@@ -24,24 +24,24 @@
         /* ============ LOGIN OVERLAY ============ */
         .login-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #0f111a; z-index: 9999; display: flex; align-items: center; justify-content: center; flex-direction: column; }
         .login-overlay.hidden { display: none; }
-        .login-container { background: var(--admin-card); border-radius: 20px; padding: 50px 40px; width: 90%; max-width: 450px; box-shadow: var(--shadow-lg); border: 1px solid var(--admin-border); animation: slideUp 0.5s ease; }
+        .login-container { background: var(--admin-card); border-radius: 20px; padding: 60px 50px; width: 90%; max-width: 550px; box-shadow: var(--shadow-lg); border: 1px solid var(--admin-border); animation: slideUp 0.5s ease; }
         @keyframes slideUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
         .login-logo { text-align: center; margin-bottom: 30px; }
         .login-logo .admin-logo-icon { width: 80px; height: 80px; background: var(--admin-gradient); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 15px; font-size: 2rem; color: white; box-shadow: 0 8px 25px rgba(79,70,229,0.3); }
         .login-logo h2 { font-size: 1.5rem; color: white; font-weight: 700; }
-        .login-logo p { color: var(--admin-text-muted); font-size: 0.85rem; margin-top: 5px; }
-        .login-form .form-group { margin-bottom: 20px; }
-        .login-form label { display: block; margin-bottom: 8px; color: var(--admin-text-muted); font-size: 0.85rem; font-weight: 500; text-transform: uppercase; letter-spacing: 0.5px; }
-        .login-form input { width: 100%; padding: 14px 18px; background: var(--admin-input); border: 2px solid var(--admin-border); border-radius: var(--radius-sm); color: white; font-size: 1rem; transition: all 0.3s; }
+        .login-logo p { color: var(--admin-text-muted); font-size: 0.95rem; margin-top: 5px; }
+        .login-form .form-group { margin-bottom: 25px; }
+        .login-form label { display: block; margin-bottom: 8px; color: var(--admin-text-muted); font-size: 0.9rem; font-weight: 500; text-transform: uppercase; letter-spacing: 0.5px; }
+        .login-form input { width: 100%; padding: 16px 20px; background: var(--admin-input); border: 2px solid var(--admin-border); border-radius: var(--radius-sm); color: white; font-size: 1.05rem; transition: all 0.3s; }
         .login-form input:focus { outline: none; border-color: var(--admin-accent); box-shadow: 0 0 0 3px rgba(79,70,229,0.15); background: #2a3148; }
         .login-form input::placeholder { color: #555; }
-        .login-error { background: rgba(239,68,68,0.1); border: 1px solid rgba(239,68,68,0.3); color: #fca5a5; padding: 12px 15px; border-radius: var(--radius-sm); font-size: 0.85rem; margin-bottom: 20px; display: none; animation: shake 0.5s ease; }
+        .login-error { background: rgba(239,68,68,0.1); border: 1px solid rgba(239,68,68,0.3); color: #fca5a5; padding: 12px 15px; border-radius: var(--radius-sm); font-size: 0.9rem; margin-bottom: 20px; display: none; animation: shake 0.5s ease; }
         .login-error.show { display: block; }
         @keyframes shake { 0%, 100% { transform: translateX(0); } 25% { transform: translateX(-10px); } 75% { transform: translateX(10px); } }
-        .btn-login { width: 100%; padding: 14px; background: var(--admin-gradient); color: white; border: none; border-radius: var(--radius-sm); font-size: 1rem; font-weight: 600; cursor: pointer; transition: all 0.3s; letter-spacing: 0.5px; }
+        .btn-login { width: 100%; padding: 16px; background: var(--admin-gradient); color: white; border: none; border-radius: var(--radius-sm); font-size: 1.1rem; font-weight: 600; cursor: pointer; transition: all 0.3s; letter-spacing: 0.5px; }
         .btn-login:hover { transform: translateY(-2px); box-shadow: 0 8px 25px rgba(79,70,229,0.4); }
         .btn-login:disabled { opacity: 0.6; cursor: not-allowed; transform: none; }
-        .login-footer { text-align: center; margin-top: 20px; color: var(--admin-text-muted); font-size: 0.75rem; }
+        .login-footer { text-align: center; margin-top: 25px; color: var(--admin-text-muted); font-size: 0.85rem; }
         .login-footer a { color: var(--admin-accent-light); text-decoration: none; }
 
         /* ============ MAIN LAYOUT ============ */
@@ -151,28 +151,29 @@
         .search-bar input { background: none; border: none; color: white; font-size: 0.9rem; outline: none; width: 200px; }
         .search-bar input::placeholder { color: #555; }
 
-        /* ============ MODAL ============ */
+        /* ============ ENLARGED MODAL ============ */
         .modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); z-index: 1000; display: none; align-items: center; justify-content: center; }
         .modal-overlay.show { display: flex; }
-        .modal-dialog { background: var(--admin-card); border: 1px solid var(--admin-border); border-radius: var(--radius); width: 90%; max-width: 600px; max-height: 85vh; overflow-y: auto; animation: modalSlideIn 0.3s ease; box-shadow: var(--shadow-lg); }
+        .modal-dialog { background: var(--admin-card); border: 1px solid var(--admin-border); border-radius: var(--radius); width: 95%; max-width: 750px; max-height: 85vh; overflow-y: auto; animation: modalSlideIn 0.3s ease; box-shadow: var(--shadow-lg); }
+        @keyframes modalSlideIn { from { opacity: 0; transform: translateY(-30px) scale(0.95); } to { opacity: 1; transform: translateY(0) scale(1); } }
         .modal-header { padding: 25px 30px; border-bottom: 1px solid var(--admin-border); display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; background: var(--admin-card); z-index: 10; }
         .modal-header h3 { font-size: 1.2rem; color: white; font-weight: 600; }
         .modal-close { background: none; border: none; color: var(--admin-text-muted); cursor: pointer; font-size: 1.3rem; padding: 5px; border-radius: 50%; transition: all 0.2s; width: 35px; height: 35px; display: flex; align-items: center; justify-content: center; }
         .modal-close:hover { background: var(--admin-hover); color: white; }
-        .modal-body { padding: 30px; }
+        .modal-body { padding: 35px 40px; }
         .modal-body .form-group { margin-bottom: 20px; }
-        .modal-body .form-group label { display: block; margin-bottom: 8px; color: var(--admin-text-muted); font-size: 0.8rem; font-weight: 500; text-transform: uppercase; letter-spacing: 0.5px; }
-        .modal-body .form-group input, .modal-body .form-group select, .modal-body .form-group textarea { width: 100%; padding: 12px 16px; background: var(--admin-input); border: 2px solid var(--admin-border); border-radius: var(--radius-sm); color: white; font-size: 0.9rem; transition: all 0.3s; }
-        .modal-body .form-group textarea { resize: vertical; min-height: 100px; }
+        .modal-body .form-group label { display: block; margin-bottom: 8px; color: var(--admin-text-muted); font-size: 0.9rem; font-weight: 500; text-transform: uppercase; letter-spacing: 0.5px; }
+        .modal-body .form-group input, .modal-body .form-group select, .modal-body .form-group textarea { width: 100%; padding: 14px 18px; background: var(--admin-input); border: 2px solid var(--admin-border); border-radius: var(--radius-sm); color: white; font-size: 1rem; transition: all 0.3s; }
+        .modal-body .form-group textarea { resize: vertical; min-height: 120px; }
         .modal-body .form-group input:focus, .modal-body .form-group select:focus, .modal-body .form-group textarea:focus { outline: none; border-color: var(--admin-accent); box-shadow: 0 0 0 3px rgba(79,70,229,0.15); }
         .modal-body .form-group select option { background: var(--admin-card); color: white; }
-        .form-hint { font-size: 0.75rem; color: var(--admin-text-muted); margin-top: 5px; display: block; }
+        .form-hint { font-size: 0.8rem; color: var(--admin-text-muted); margin-top: 5px; display: block; }
         .modal-footer { padding: 20px 30px; border-top: 1px solid var(--admin-border); display: flex; justify-content: flex-end; gap: 12px; position: sticky; bottom: 0; background: var(--admin-card); }
-        .btn-cancel { padding: 10px 22px; background: transparent; border: 1px solid var(--admin-border); color: var(--admin-text-muted); border-radius: var(--radius-sm); cursor: pointer; font-weight: 500; transition: all 0.2s; }
+        .btn-cancel { padding: 12px 25px; background: transparent; border: 1px solid var(--admin-border); color: var(--admin-text-muted); border-radius: var(--radius-sm); cursor: pointer; font-weight: 500; font-size: 1rem; transition: all 0.2s; }
         .btn-cancel:hover { background: var(--admin-hover); color: white; }
-        .btn-save { padding: 10px 25px; background: var(--admin-accent); border: none; color: white; border-radius: var(--radius-sm); cursor: pointer; font-weight: 600; transition: all 0.2s; }
+        .btn-save { padding: 12px 30px; background: var(--admin-accent); border: none; color: white; border-radius: var(--radius-sm); cursor: pointer; font-weight: 600; font-size: 1rem; transition: all 0.2s; }
         .btn-save:hover { background: var(--admin-accent-light); transform: translateY(-1px); }
-        .btn-danger-modal { padding: 10px 25px; background: var(--admin-danger); border: none; color: white; border-radius: var(--radius-sm); cursor: pointer; font-weight: 600; transition: all 0.2s; }
+        .btn-danger-modal { padding: 12px 30px; background: var(--admin-danger); border: none; color: white; border-radius: var(--radius-sm); cursor: pointer; font-weight: 600; font-size: 1rem; transition: all 0.2s; }
         .btn-danger-modal:hover { background: #dc2626; }
 
         /* ============ TOAST ============ */
@@ -189,10 +190,10 @@
         /* ============ CONFIRM DIALOG ============ */
         .confirm-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); z-index: 2000; display: none; align-items: center; justify-content: center; }
         .confirm-overlay.show { display: flex; }
-        .confirm-dialog { background: var(--admin-card); border: 1px solid var(--admin-border); border-radius: var(--radius); padding: 35px; text-align: center; max-width: 420px; width: 90%; animation: modalSlideIn 0.3s ease; }
-        .confirm-dialog i { font-size: 3rem; color: var(--admin-warning); margin-bottom: 15px; }
-        .confirm-dialog h4 { color: white; margin-bottom: 10px; font-size: 1.1rem; }
-        .confirm-dialog p { color: var(--admin-text-muted); font-size: 0.85rem; margin-bottom: 25px; }
+        .confirm-dialog { background: var(--admin-card); border: 1px solid var(--admin-border); border-radius: var(--radius); padding: 35px; text-align: center; max-width: 450px; width: 90%; animation: modalSlideIn 0.3s ease; }
+        .confirm-dialog i { font-size: 3.5rem; color: var(--admin-warning); margin-bottom: 15px; }
+        .confirm-dialog h4 { color: white; margin-bottom: 10px; font-size: 1.2rem; }
+        .confirm-dialog p { color: var(--admin-text-muted); font-size: 0.9rem; margin-bottom: 25px; }
         .confirm-dialog .confirm-actions { display: flex; gap: 12px; justify-content: center; }
 
         /* ============ ACTIVITY LOG ============ */
@@ -203,11 +204,11 @@
         .activity-item:hover::before { background: var(--admin-accent); }
         .activity-item .activity-header { display: flex; align-items: center; gap: 10px; margin-bottom: 5px; flex-wrap: wrap; }
         .activity-item .activity-action { font-weight: 600; color: white; font-size: 0.85rem; text-transform: capitalize;}
-        .activity-item .activity-time { font-size: 0.7rem; color: var(--admin-text-muted); }
-        .activity-item .activity-details { font-size: 0.8rem; color: var(--admin-text-muted); }
+        .activity-item .activity-time { font-size: 0.75rem; color: var(--admin-text-muted); }
+        .activity-item .activity-details { font-size: 0.85rem; color: var(--admin-text-muted); }
 
         /* ============ EXPORT BUTTONS ============ */
-        .export-btn { padding: 8px 16px; border-radius: 6px; border: 1px solid var(--admin-border); background: var(--admin-card); color: white; cursor: pointer; font-size: 0.8rem; transition: all 0.2s; display: inline-flex; align-items: center; gap: 6px; }
+        .export-btn { padding: 8px 16px; border-radius: 6px; border: 1px solid var(--admin-border); background: var(--admin-card); color: white; cursor: pointer; font-size: 0.85rem; transition: all 0.2s; display: inline-flex; align-items: center; gap: 6px; }
         .export-btn:hover { background: var(--admin-hover); }
         .export-btn.pdf { color: #f87171; border-color: rgba(239,68,68,0.3); }
         .export-btn.pdf:hover { background: rgba(239,68,68,0.1); }
@@ -393,8 +394,10 @@
                             <div class="data-card-actions">
                                 <div class="search-bar">
                                     <i class="fas fa-search"></i>
-                                    <input type="text" id="userSearch" placeholder="Search users..." oninput="renderUsers()">
+                                    <input type="text" id="userSearch" placeholder="Search users..." oninput="window.renderUsers()">
                                 </div>
+                                <button class="export-btn pdf" onclick="window.exportUsers('pdf')"><i class="fas fa-file-pdf"></i> PDF</button>
+                                <button class="export-btn excel" onclick="window.exportUsers('excel')"><i class="fas fa-file-excel"></i> Excel</button>
                             </div>
                         </div>
                         <div class="table-container">
@@ -423,9 +426,9 @@
                             <div class="data-card-actions">
                                 <div class="search-bar">
                                     <i class="fas fa-search"></i>
-                                    <input type="text" id="courseSearch" placeholder="Search courses..." oninput="renderCourses()">
+                                    <input type="text" id="courseSearch" placeholder="Search courses..." oninput="window.renderCourses()">
                                 </div>
-                                <button class="header-btn primary" onclick="openCourseModal()"><i class="fas fa-plus"></i> Add Course</button>
+                                <button class="header-btn primary" onclick="window.openCourseModal()"><i class="fas fa-plus"></i> Add Course</button>
                             </div>
                         </div>
                         <div class="table-container">
@@ -454,9 +457,9 @@
                             <div class="data-card-actions">
                                 <div class="search-bar">
                                     <i class="fas fa-search"></i>
-                                    <input type="text" id="tutorSearch" placeholder="Search tutors..." oninput="renderTutors()">
+                                    <input type="text" id="tutorSearch" placeholder="Search tutors..." oninput="window.renderTutors()">
                                 </div>
-                                <button class="header-btn primary" onclick="openTutorModal()"><i class="fas fa-plus"></i> Add Tutor</button>
+                                <button class="header-btn primary" onclick="window.openTutorModal()"><i class="fas fa-plus"></i> Add Tutor</button>
                             </div>
                         </div>
                         <div class="table-container">
@@ -545,7 +548,7 @@
                                 </div>
                                 <div style="display: flex; gap: 10px;">
                                     <button type="submit" class="btn-save"><i class="fas fa-bullhorn"></i> Publish</button>
-                                    <button type="button" class="btn-danger-modal" onclick="removeAnnouncement()"><i class="fas fa-times"></i> Remove</button>
+                                    <button type="button" class="btn-danger-modal" onclick="window.removeAnnouncement()"><i class="fas fa-times"></i> Remove</button>
                                 </div>
                             </form>
                             <div id="currentAnnouncementInfo" style="margin-top: 20px; padding: 15px; background: var(--admin-input); border-radius: 8px; display: none;">
@@ -560,6 +563,11 @@
                     <div class="data-card">
                         <div class="data-card-header">
                             <h3><i class="fas fa-history"></i> Global Activity Log <span class="badge-count" id="activityCountBadge">0</span></h3>
+                            <div class="data-card-actions">
+                                <button class="export-btn pdf" onclick="window.exportActivities('pdf')"><i class="fas fa-file-pdf"></i> PDF</button>
+                                <button class="export-btn excel" onclick="window.exportActivities('excel')"><i class="fas fa-file-excel"></i> Excel</button>
+                                <button class="header-btn" onclick="window.clearActivities()" style="color: #f87171;"><i class="fas fa-trash-alt"></i> Clear Log</button>
+                            </div>
                         </div>
                         <div class="table-container">
                             <div class="activity-timeline" id="activitiesTimeline">
@@ -597,7 +605,7 @@
         <div class="modal-dialog">
             <div class="modal-header">
                 <h3 id="courseModalTitle">Add New Course</h3>
-                <button class="modal-close" onclick="closeCourseModal()">&times;</button>
+                <button class="modal-close" onclick="window.closeCourseModal()">&times;</button>
             </div>
             <div class="modal-body">
                 <form id="courseForm">
@@ -632,8 +640,8 @@
                 </form>
             </div>
             <div class="modal-footer">
-                <button class="btn-cancel" onclick="closeCourseModal()">Cancel</button>
-                <button class="btn-save" onclick="saveCourse()"><i class="fas fa-save"></i> Save</button>
+                <button class="btn-cancel" onclick="window.closeCourseModal()">Cancel</button>
+                <button class="btn-save" onclick="window.saveCourse()"><i class="fas fa-save"></i> Save</button>
             </div>
         </div>
     </div>
@@ -642,7 +650,7 @@
         <div class="modal-dialog">
             <div class="modal-header">
                 <h3 id="tutorModalTitle">Add New Tutor</h3>
-                <button class="modal-close" onclick="closeTutorModal()">&times;</button>
+                <button class="modal-close" onclick="window.closeTutorModal()">&times;</button>
             </div>
             <div class="modal-body">
                 <form id="tutorForm">
@@ -696,14 +704,18 @@
                         <input type="text" id="tutorWhatsApp">
                     </div>
                     <div class="form-group">
+                        <label>Image URL</label>
+                        <input type="text" id="tImg" placeholder="Link to photo">
+                    </div>
+                    <div class="form-group">
                         <label>Bio</label>
                         <textarea id="tutorBio" rows="2"></textarea>
                     </div>
                 </form>
             </div>
             <div class="modal-footer">
-                <button class="btn-cancel" onclick="closeTutorModal()">Cancel</button>
-                <button class="btn-save" onclick="saveTutor()"><i class="fas fa-save"></i> Save</button>
+                <button class="btn-cancel" onclick="window.closeTutorModal()">Cancel</button>
+                <button class="btn-save" onclick="window.saveTutor()"><i class="fas fa-save"></i> Save</button>
             </div>
         </div>
     </div>
@@ -714,7 +726,7 @@
             <h4 id="confirmTitle">Confirm Deletion</h4>
             <p id="confirmMessage">Are you sure?</p>
             <div class="confirm-actions">
-                <button class="btn-cancel" onclick="closeConfirmDialog()">Cancel</button>
+                <button class="btn-cancel" onclick="window.closeConfirmDialog()">Cancel</button>
                 <button class="btn-danger-modal" id="confirmDeleteBtn">Delete</button>
             </div>
         </div>
@@ -722,11 +734,10 @@
 
     <div class="toast-container" id="toastContainer"></div>
 
-    <script type="module">
-        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-app.js";
-        import { getFirestore, collection, addDoc, doc, setDoc, getDoc, getDocs, onSnapshot, query, orderBy, deleteDoc } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-firestore.js";
+    <script src="https://www.gstatic.com/firebasejs/10.8.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.8.1/firebase-firestore-compat.js"></script>
 
-        // Your Firebase config
+    <script>
         const firebaseConfig = {
             apiKey: "AIzaSyBoQQwFUf0YQNbSNgMkLzR8NcuOVKvlN3g",
             authDomain: "genius-point-academy.firebaseapp.com",
@@ -736,10 +747,9 @@
             appId: "1:963510545735:web:b3672dc5e7b7ba42317062"
         };
 
-        const app = initializeApp(firebaseConfig);
-        const db = getFirestore(app);
+        firebase.initializeApp(firebaseConfig);
+        const db = firebase.firestore();
 
-        // Global State arrays linked to Firebase
         let globalUsers = [];
         let globalCourses = [];
         let globalTutors = [];
@@ -751,15 +761,6 @@
         let currentAdmin = null;
         let confirmCallback = null;
 
-        // Make functions globally available to HTML onclick handlers
-        window.openCourseModal = openCourseModal;
-        window.closeCourseModal = closeCourseModal;
-        window.openTutorModal = openTutorModal;
-        window.closeTutorModal = closeTutorModal;
-        window.closeConfirmDialog = closeConfirmDialog;
-        window.refreshAllData = refreshAllData;
-
-        // Initialize Admin Session
         document.addEventListener('DOMContentLoaded', function() {
             const savedAdmin = sessionStorage.getItem('gpa_admin_session');
             if (savedAdmin === 'true') {
@@ -768,9 +769,8 @@
             }
         });
 
-        // ============ ADMIN LOGIN ============
         document.getElementById('adminLoginForm').addEventListener('submit', function(e) {
-            e.preventDefault();
+            e.preventDefault(); 
             const adminName = document.getElementById('adminName').value.trim();
             const password = document.getElementById('adminPassword').value;
             const loginBtn = document.getElementById('loginBtn');
@@ -811,70 +811,59 @@
             logAdminActivity('login', `Admin "${adminName}" logged in`);
             showToast('Welcome back, ' + adminName + '!', 'success');
             
-            // Start Firebase Listeners
             startFirebaseListeners();
             navigateTo('dashboard');
         }
 
-        document.getElementById('sidebarLogoutBtn').addEventListener('click', () => {
-            if (confirm('Are you sure you want to logout?')) {
+        document.getElementById('sidebarLogoutBtn').addEventListener('click', function() {
+            showConfirmDialog('Logout', 'Are you sure you want to logout?', function() {
                 logAdminActivity('logout', `Admin "${currentAdmin}" logged out`);
                 sessionStorage.clear();
-                currentAdmin = null;
-                document.getElementById('loginOverlay').classList.remove('hidden');
-                document.getElementById('adminContainer').style.display = 'none';
-                document.getElementById('adminLoginForm').reset();
-            }
+                location.reload();
+            });
         });
 
-        // ============ FIREBASE REAL-TIME LISTENERS ============
         function startFirebaseListeners() {
-            // Listen for Users
-            onSnapshot(collection(db, "users"), (snapshot) => {
+            db.collection("users").onSnapshot((snapshot) => {
                 globalUsers = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
                 document.getElementById('sidebarUserCount').textContent = globalUsers.length;
-                if(document.getElementById('page-users').classList.contains('active')) renderUsers();
+                if(document.getElementById('page-users').classList.contains('active')) window.renderUsers();
                 updateDashboardStats();
             });
 
-            // Listen for Messages
-            onSnapshot(query(collection(db, "messages"), orderBy("timestamp", "desc")), (snapshot) => {
+            db.collection("messages").orderBy("timestamp", "desc").onSnapshot((snapshot) => {
                 globalMessages = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
                 document.getElementById('sidebarMsgCount').textContent = globalMessages.length;
-                if(document.getElementById('page-messages').classList.contains('active')) renderSentMessages();
+                if(document.getElementById('page-messages').classList.contains('active')) window.renderSentMessages();
                 updateDashboardStats();
             });
 
-            // Listen for Bookings
-            onSnapshot(query(collection(db, "bookings"), orderBy("timestamp", "desc")), (snapshot) => {
+            db.collection("bookings").orderBy("timestamp", "desc").onSnapshot((snapshot) => {
                 globalBookings = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
-                if(document.getElementById('page-bookings').classList.contains('active')) renderBookings();
+                if(document.getElementById('page-bookings').classList.contains('active')) window.renderBookings();
                 updateDashboardStats();
             });
 
-            // Listen for Activities
-            onSnapshot(query(collection(db, "activities"), orderBy("timestamp", "desc")), (snapshot) => {
+            db.collection("activities").orderBy("timestamp", "desc").onSnapshot((snapshot) => {
                 globalActivities = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
-                if(document.getElementById('page-activities').classList.contains('active')) renderActivities();
-                if(document.getElementById('page-dashboard').classList.contains('active')) renderDashboardActivity();
+                if(document.getElementById('page-activities').classList.contains('active')) window.renderActivities();
+                if(document.getElementById('page-dashboard').classList.contains('active')) window.renderDashboardActivity();
             });
             
-            // Note: Courses and Tutors are setup in HTML initially, we'll listen to them in Cloud too.
-            onSnapshot(collection(db, "courses"), (snapshot) => {
+            db.collection("courses").onSnapshot((snapshot) => {
                 if(!snapshot.empty) globalCourses = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
                 if(document.getElementById('page-courses').classList.contains('active')) window.renderCourses();
                 updateDashboardStats();
             });
 
-            onSnapshot(collection(db, "tutors"), (snapshot) => {
+            db.collection("tutors").onSnapshot((snapshot) => {
                 if(!snapshot.empty) globalTutors = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
                 if(document.getElementById('page-tutors').classList.contains('active')) window.renderTutors();
                 updateDashboardStats();
             });
             
-            // Sync Announcement
-            onSnapshot(doc(db, "settings", "announcement"), (docSnap) => {
-                if (docSnap.exists()) {
+            db.collection("settings").doc("announcement").onSnapshot((docSnap) => {
+                if (docSnap.exists) {
                     const data = docSnap.data();
                     const infoDiv = document.getElementById('currentAnnouncementInfo');
                     if (data.active) {
@@ -889,9 +878,9 @@
 
         async function logAdminActivity(action, details) {
             try {
-                await addDoc(collection(db, "activities"), {
+                await db.collection("activities").add({
                     action: action,
-                    userName: currentAdmin,
+                    userName: currentAdmin || 'Admin',
                     userEmail: 'admin@gpa.com',
                     details: details,
                     timestamp: new Date().toISOString()
@@ -899,11 +888,9 @@
             } catch (e) { console.error("Logging error", e); }
         }
 
-        // ============ NAVIGATION ============
         document.querySelectorAll('.sidebar-nav .nav-item').forEach(item => {
             item.addEventListener('click', function() {
-                const page = this.getAttribute('data-page');
-                navigateTo(page);
+                navigateTo(this.getAttribute('data-page'));
                 document.getElementById('sidebar').classList.remove('open');
                 document.getElementById('sidebarBackdrop').classList.remove('show');
             });
@@ -915,7 +902,7 @@
                 if (item.getAttribute('data-page') === page) item.classList.add('active');
             });
             
-            document.querySelectorAll('.page-section').forEach(sec => sec.classList.remove('active'));
+            document.querySelectorAll('.page-section').forEach(section => section.classList.remove('active'));
             const targetPage = document.getElementById('page-' + page);
             if (targetPage) targetPage.classList.add('active');
             
@@ -923,7 +910,7 @@
                 dashboard: ['Dashboard', 'Overview of all activities'],
                 users: ['Users Management', 'Manage registered users'],
                 courses: ['Courses Management', 'Add, edit, or remove courses'],
-                tutors: ['Tutors Management', 'Manage tutor profiles and assignments'],
+                tutors: ['Tutors Management', 'Manage tutor profiles'],
                 messages: ['Send Messages', 'Communicate with website users'],
                 announcement: ['Announcement Bar', 'Manage the scrolling announcement'],
                 activities: ['Activity Log', 'Monitor all actions and events'],
@@ -937,30 +924,29 @@
             const addBtn = document.getElementById('headerAddBtn');
             if (page === 'courses' || page === 'tutors') {
                 addBtn.style.display = 'flex';
-                addBtn.onclick = page === 'courses' ? openCourseModal : openTutorModal;
+                addBtn.onclick = page === 'courses' ? window.openCourseModal : window.openTutorModal;
                 addBtn.innerHTML = '<i class="fas fa-plus"></i> Add ' + (page === 'courses' ? 'Course' : 'Tutor');
             } else {
                 addBtn.style.display = 'none';
             }
             
-            refreshPageData(page);
+            window.refreshPageData(page);
         }
 
-        function refreshPageData(page) {
-            if(page === 'dashboard') { updateDashboardStats(); renderDashboardActivity(); }
-            if(page === 'users') renderUsers();
+        window.refreshPageData = function(page) {
+            if(page === 'dashboard') { updateDashboardStats(); window.renderDashboardActivity(); }
+            if(page === 'users') window.renderUsers();
             if(page === 'courses') window.renderCourses();
             if(page === 'tutors') window.renderTutors();
-            if(page === 'messages') renderSentMessages();
-            if(page === 'activities') renderActivities();
-            if(page === 'bookings') renderBookings();
+            if(page === 'messages') window.renderSentMessages();
+            if(page === 'activities') window.renderActivities();
+            if(page === 'bookings') window.renderBookings();
         }
 
-        function refreshAllData() {
+        window.refreshAllData = function() {
             showToast('Syncing with Cloud Database...', 'info');
-            // Data syncs automatically via onSnapshot, just update UI
             const activePage = document.querySelector('.page-section.active');
-            if (activePage) refreshPageData(activePage.id.replace('page-', ''));
+            if (activePage) window.refreshPageData(activePage.id.replace('page-', ''));
         }
 
         function updateDashboardStats() {
@@ -968,18 +954,16 @@
             document.getElementById('statCourses').textContent = globalCourses.length;
             document.getElementById('statTutors').textContent = globalTutors.length;
             document.getElementById('statMessages').textContent = globalMessages.length;
-            document.getElementById('statActivities').textContent = globalBookings.length; // Shows bookings on dashboard
+            document.getElementById('statActivities').textContent = globalBookings.length;
         }
 
-        // ============ RENDER DATA FUNCTIONS ============
-        function renderDashboardActivity() {
+        window.renderDashboardActivity = function() {
             const container = document.getElementById('dashboardActivity');
             if (globalActivities.length === 0) {
                 container.innerHTML = '<div class="empty-state"><i class="fas fa-history"></i><p>No activities recorded yet</p></div>';
                 return;
             }
-            const recent = globalActivities.slice(0, 8); // Top 8 newest
-            container.innerHTML = recent.map(act => {
+            container.innerHTML = globalActivities.slice(0, 8).map(act => {
                 const time = new Date(act.timestamp).toLocaleString('en-US', { month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit' });
                 return `<div class="activity-item">
                             <div class="activity-header"><span class="activity-action">${act.action.replace('_', ' ')}</span><span class="activity-time">${time}</span></div>
@@ -997,6 +981,7 @@
                 filtered = filtered.filter(u => (u.fullName||'').toLowerCase().includes(searchTerm) || (u.email||'').toLowerCase().includes(searchTerm));
             }
             
+            document.getElementById('userCountBadge').textContent = filtered.length;
             if (filtered.length === 0) {
                 tbody.innerHTML = '<tr><td colspan="7"><div class="empty-state"><i class="fas fa-user-slash"></i><p>No users found</p></div></td></tr>';
                 return;
@@ -1018,14 +1003,14 @@
         window.deleteUserRecord = function(id) {
             showConfirmDialog('Delete User Record', 'Remove this user from the database? (This does not delete their auth login)', async function() {
                 try {
-                    await deleteDoc(doc(db, "users", id));
+                    await db.collection("users").doc(id).delete();
                     logAdminActivity('delete_user', 'Deleted user record');
                     showToast('User record removed', 'success');
                 } catch(e) { showToast('Error deleting', 'error'); }
             });
         }
 
-        function renderBookings() {
+        window.renderBookings = function() {
             const tbody = document.getElementById('bookingsTableBody');
             if (globalBookings.length === 0) {
                 tbody.innerHTML = '<tr><td colspan="5"><div class="empty-state"><i class="fas fa-calendar-times"></i><p>No bookings yet</p></div></td></tr>';
@@ -1043,97 +1028,6 @@
             }).join('');
         }
 
-        function renderSentMessages() {
-            const tbody = document.getElementById('sentMessagesBody');
-            if (globalMessages.length === 0) {
-                tbody.innerHTML = '<tr><td colspan="5"><div class="empty-state"><i class="fas fa-inbox"></i><p>No messages sent yet</p></div></td></tr>';
-                return;
-            }
-            tbody.innerHTML = globalMessages.map(msg => {
-                const time = new Date(msg.timestamp).toLocaleString();
-                return `<tr>
-                            <td><span class="status-badge ${msg.type}">${msg.type}</span></td>
-                            <td><strong>${msg.title}</strong></td>
-                            <td>${msg.body.substring(0, 40)}...</td>
-                            <td>${time}</td>
-                            <td>
-                                <button class="btn-sm delete" onclick="window.deleteGlobalMsg('${msg.id}')" title="Delete"><i class="fas fa-trash-alt"></i></button>
-                            </td>
-                        </tr>`;
-            }).join('');
-        }
-
-        function renderActivities() {
-            const container = document.getElementById('activitiesTimeline');
-            if (globalActivities.length === 0) {
-                container.innerHTML = '<div class="empty-state"><p>No activities found</p></div>';
-                return;
-            }
-            container.innerHTML = globalActivities.map(act => {
-                const time = new Date(act.timestamp).toLocaleString();
-                return `<div class="activity-item">
-                            <div class="activity-header"><span class="activity-action">${act.action}</span><span class="activity-time">${time}</span></div>
-                            <div class="activity-details"><strong>${act.userName || 'User'}</strong> - ${act.details || ''}</div>
-                        </div>`;
-            }).join('');
-        }
-
-        // ============ FORMS SUBMISSIONS (MESSAGES / ANNOUNCEMENTS) ============
-        document.getElementById('sendMessageForm').addEventListener('submit', async function(e) {
-            e.preventDefault();
-            const type = document.getElementById('messageType').value;
-            const title = document.getElementById('messageTitle').value.trim();
-            const body = document.getElementById('messageBody').value.trim();
-            
-            const btn = this.querySelector('.btn-save');
-            btn.innerHTML = '<span class="spinner"></span> Sending...';
-            try {
-                await addDoc(collection(db, "messages"), {
-                    type: type, title: title, body: body, timestamp: new Date().toISOString(), sentBy: currentAdmin, readBy: []
-                });
-                logAdminActivity('send_message', `Sent ${type} message: "${title}"`);
-                this.reset();
-                showToast('Message sent to all users!', 'success');
-            } catch(e) { showToast('Error sending message', 'error'); }
-            finally { btn.innerHTML = '<i class="fas fa-paper-plane"></i> Send Global Message'; }
-        });
-
-        document.getElementById('announcementForm').addEventListener('submit', async function(e) {
-            e.preventDefault();
-            const type = document.getElementById('announcementType').value;
-            const text = document.getElementById('announcementText').value.trim();
-            const btn = this.querySelector('.btn-save');
-            btn.innerHTML = '<span class="spinner"></span> Publishing...';
-            try {
-                await setDoc(doc(db, "settings", "announcement"), {
-                    text: text, type: type, active: true, timestamp: new Date().toISOString(), sentBy: currentAdmin
-                });
-                logAdminActivity('publish_announcement', `Published announcement`);
-                this.reset();
-                showToast('Announcement Live!', 'success');
-            } catch(e) { showToast('Error publishing', 'error'); }
-            finally { btn.innerHTML = '<i class="fas fa-bullhorn"></i> Publish'; }
-        });
-
-        window.removeAnnouncement = async function() {
-            try {
-                await setDoc(doc(db, "settings", "announcement"), { active: false }, { merge: true });
-                logAdminActivity('remove_announcement', `Removed announcement`);
-                showToast('Announcement removed', 'info');
-            } catch(e) { showToast('Error removing', 'error'); }
-        }
-
-        window.deleteGlobalMsg = function(id) {
-            showConfirmDialog('Delete Message', 'Remove this message from the cloud? Users will no longer see it.', async function() {
-                try {
-                    await deleteDoc(doc(db, "messages", id));
-                    logAdminActivity('delete_message', 'Deleted a global message');
-                    showToast('Message deleted', 'success');
-                } catch(e) { showToast('Error deleting', 'error'); }
-            });
-        }
-
-        // ============ COURSES AND TUTORS CLOUD LOGIC (Simplified versions for UI) ============
         let currentCourseTab = 'first';
         document.querySelectorAll('[data-course-tab]').forEach(t => t.addEventListener('click', function() {
             document.querySelectorAll('[data-course-tab]').forEach(x => x.classList.remove('active'));
@@ -1149,6 +1043,7 @@
             let filtered = globalCourses.filter(c => c.semester === currentCourseTab);
             
             if (searchTerm) filtered = filtered.filter(c => c.code.toLowerCase().includes(searchTerm) || c.name.toLowerCase().includes(searchTerm));
+            filtered.sort((a,b) => parseInt(a.level)-parseInt(b.level) || a.code.localeCompare(b.code));
             document.getElementById('courseCountBadge').textContent = filtered.length;
             
             if (filtered.length === 0) {
@@ -1163,11 +1058,66 @@
                             <td><span class="status-badge ${c.semester === 'first' ? 'info' : 'active'}">${c.semester}</span></td>
                             <td>${tNames}</td>
                             <td>
-                                <button class="btn-sm edit" onclick="window.editCourse('${c.id}')"><i class="fas fa-edit"></i></button>
+                                <button class="btn-sm edit" onclick="window.openCourseModal('${c.id}')"><i class="fas fa-edit"></i></button>
                                 <button class="btn-sm delete" onclick="window.deleteCourse('${c.id}')"><i class="fas fa-trash-alt"></i></button>
                             </td>
                         </tr>`;
             }).join('');
+        };
+
+        window.openCourseModal = function(id = null) {
+            document.getElementById('courseForm').reset();
+            document.getElementById('courseEditId').value = '';
+            document.getElementById('courseModalTitle').textContent = id ? 'Edit Course' : 'Add Course';
+            if(id) {
+                const c = globalCourses.find(x => x.id === id);
+                if(c) {
+                    document.getElementById('courseEditId').value = c.id;
+                    document.getElementById('courseCode').value = c.code;
+                    document.getElementById('courseName').value = c.name;
+                    document.getElementById('courseLevel').value = c.level;
+                    document.getElementById('courseSemester').value = c.semester;
+                }
+            }
+            document.getElementById('courseModal').classList.add('show');
+        }
+
+        window.closeCourseModal = function() { document.getElementById('courseModal').classList.remove('show'); }
+
+        window.saveCourse = async function() {
+            const form = document.getElementById('courseForm');
+            if (!form.checkValidity()) { form.reportValidity(); return; }
+            
+            const id = document.getElementById('courseEditId').value;
+            const data = {
+                code: document.getElementById('courseCode').value.trim().toUpperCase(),
+                name: document.getElementById('courseName').value.trim(),
+                level: document.getElementById('courseLevel').value,
+                semester: document.getElementById('courseSemester').value
+            };
+            
+            try {
+                if (id) {
+                    await db.collection("courses").doc(id).set(data, {merge: true});
+                    logAdminActivity("edit_course", `Edited ${data.code}`);
+                } else {
+                    await db.collection("courses").add(data);
+                    logAdminActivity("add_course", `Added ${data.code}`);
+                }
+                window.closeCourseModal();
+                showToast("Course Saved!", "success");
+            } catch(e) { showToast("Error saving", "error"); }
+        };
+
+        window.deleteCourse = function(id) {
+            const c = globalCourses.find(x => x.id === id);
+            showConfirmDialog('Delete', `Delete "${c?.code}"?`, async function() {
+                try {
+                    await db.collection("courses").doc(id).delete();
+                    logAdminActivity('delete_course', `Deleted course ${c?.code}`);
+                    showToast('Course Deleted', 'success');
+                } catch(e) {}
+            });
         };
 
         let currentTutorTab = 'first';
@@ -1198,67 +1148,14 @@
                             <td>${t.level}L</td><td>₦${t.price}</td>
                             <td><span class="status-badge info">${t.semester}</span></td>
                             <td>
-                                <button class="btn-sm edit" onclick="window.editTutor('${t.id}')"><i class="fas fa-edit"></i></button>
+                                <button class="btn-sm edit" onclick="window.openTutorModal('${t.id}')"><i class="fas fa-edit"></i></button>
                                 <button class="btn-sm delete" onclick="window.deleteTutor('${t.id}')"><i class="fas fa-trash-alt"></i></button>
                             </td>
                         </tr>`;
             }).join('');
         };
 
-        // Course Modals & Firebase actions
-        function openCourseModal(id = null) {
-            document.getElementById('courseForm').reset();
-            document.getElementById('courseEditId').value = '';
-            document.getElementById('courseModalTitle').textContent = id ? 'Edit Course' : 'Add Course';
-            if(id) {
-                const c = globalCourses.find(x => x.id === id);
-                if(c) {
-                    document.getElementById('courseEditId').value = c.id;
-                    document.getElementById('courseCode').value = c.code;
-                    document.getElementById('courseName').value = c.name;
-                    document.getElementById('courseLevel').value = c.level;
-                    document.getElementById('courseSemester').value = c.semester;
-                }
-            }
-            document.getElementById('courseModal').classList.add('show');
-        }
-        function closeCourseModal() { document.getElementById('courseModal').classList.remove('show'); }
-        window.editCourse = openCourseModal;
-
-        window.saveCourse = async function() {
-            const id = document.getElementById('courseEditId').value;
-            const data = {
-                code: document.getElementById('courseCode').value.toUpperCase(),
-                name: document.getElementById('courseName').value,
-                level: document.getElementById('courseLevel').value,
-                semester: document.getElementById('courseSemester').value
-            };
-            if(!data.code || !data.name) return alert("Fill all required fields");
-            
-            try {
-                if (id) {
-                    await setDoc(doc(db, "courses", id), data, {merge: true});
-                    logAdminActivity("edit_course", `Edited ${data.code}`);
-                } else {
-                    await addDoc(collection(db, "courses"), data);
-                    logAdminActivity("add_course", `Added ${data.code}`);
-                }
-                closeCourseModal();
-                showToast("Course Saved!", "success");
-            } catch(e) { showToast("Error saving", "error"); }
-        };
-
-        window.deleteCourse = function(id) {
-            showConfirmDialog('Delete', 'Delete this course?', async function() {
-                try {
-                    await deleteDoc(doc(db, "courses", id));
-                    showToast('Course Deleted', 'success');
-                } catch(e) {}
-            });
-        };
-
-        // Tutor Modals & Firebase actions
-        function openTutorModal(id = null) {
+        window.openTutorModal = function(id = null) {
             document.getElementById('tutorForm').reset();
             document.getElementById('tutorEditId').value = '';
             document.getElementById('tutorModalTitle').textContent = id ? 'Edit Tutor' : 'Add Tutor';
@@ -1273,14 +1170,21 @@
                     document.getElementById('tutorPrice').value = t.price;
                     document.getElementById('tutorSemester').value = t.semester;
                     document.getElementById('tutorCourses').value = t.courses ? t.courses.join(', ') : '';
+                    document.getElementById('tutorEmail').value = t.email || '';
+                    document.getElementById('tutorWhatsApp').value = t.whatsapp || '';
+                    document.getElementById('tImg').value = t.imageUrl || '';
+                    document.getElementById('tutorBio').value = t.bio || '';
                 }
             }
             document.getElementById('tutorModal').classList.add('show');
         }
-        function closeTutorModal() { document.getElementById('tutorModal').classList.remove('show'); }
-        window.editTutor = openTutorModal;
+
+        window.closeTutorModal = function() { document.getElementById('tutorModal').classList.remove('show'); }
 
         window.saveTutor = async function() {
+            const form = document.getElementById('tutorForm');
+            if (!form.checkValidity()) { form.reportValidity(); return; }
+
             const id = document.getElementById('tutorEditId').value;
             const coursesRaw = document.getElementById('tutorCourses').value;
             const data = {
@@ -1290,41 +1194,141 @@
                 level: document.getElementById('tutorLevel').value,
                 price: document.getElementById('tutorPrice').value,
                 semester: document.getElementById('tutorSemester').value,
-                courses: coursesRaw ? coursesRaw.split(',').map(c=>c.trim()) : []
+                courses: coursesRaw ? coursesRaw.split(',').map(c=>c.trim()) : [],
+                email: document.getElementById('tutorEmail').value,
+                whatsapp: document.getElementById('tutorWhatsApp').value,
+                imageUrl: document.getElementById('tImg').value,
+                bio: document.getElementById('tutorBio').value
             };
-            if(!data.nickname || !data.fullName) return alert("Fill all required fields");
             
             try {
                 if (id) {
-                    await setDoc(doc(db, "tutors", id), data, {merge: true});
+                    await db.collection("tutors").doc(id).set(data, {merge: true});
                     logAdminActivity("edit_tutor", `Edited ${data.nickname}`);
                 } else {
-                    await addDoc(collection(db, "tutors"), data);
+                    await db.collection("tutors").add(data);
                     logAdminActivity("add_tutor", `Added ${data.nickname}`);
                 }
-                closeTutorModal();
+                window.closeTutorModal();
                 showToast("Tutor Saved!", "success");
             } catch(e) { showToast("Error saving", "error"); }
         };
 
         window.deleteTutor = function(id) {
-            showConfirmDialog('Delete', 'Delete this tutor?', async function() {
+            const t = globalTutors.find(x => x.id === id);
+            showConfirmDialog('Delete', `Delete tutor ${t?.nickname}?`, async function() {
                 try {
-                    await deleteDoc(doc(db, "tutors", id));
+                    await db.collection("tutors").doc(id).delete();
+                    logAdminActivity('delete_tutor', `Deleted tutor ${t?.nickname}`);
                     showToast('Tutor Deleted', 'success');
                 } catch(e) {}
             });
         };
 
-        // Utility Modals & Toasts
+        document.getElementById('sendMessageForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            const type = document.getElementById('messageType').value;
+            const title = document.getElementById('messageTitle').value.trim();
+            const body = document.getElementById('messageBody').value.trim();
+            
+            const btn = this.querySelector('.btn-save');
+            btn.innerHTML = '<span class="spinner"></span> Sending...';
+            try {
+                await db.collection("messages").add({
+                    type: type, title: title, body: body, timestamp: new Date().toISOString(), sentBy: currentAdmin, readBy: []
+                });
+                logAdminActivity('send_message', `Sent ${type} message: "${title}"`);
+                this.reset();
+                showToast('Message sent to all users!', 'success');
+            } catch(e) { showToast('Error sending message', 'error'); }
+            finally { btn.innerHTML = '<i class="fas fa-paper-plane"></i> Send Global Message'; }
+        });
+
+        window.renderSentMessages = function() {
+            const tbody = document.getElementById('sentMessagesBody');
+            if (globalMessages.length === 0) {
+                tbody.innerHTML = '<tr><td colspan="5"><div class="empty-state"><i class="fas fa-inbox"></i><p>No messages sent yet</p></div></td></tr>';
+                return;
+            }
+            tbody.innerHTML = globalMessages.map(msg => {
+                const time = new Date(msg.timestamp).toLocaleString();
+                return `<tr>
+                            <td><span class="status-badge ${msg.type}">${msg.type}</span></td>
+                            <td><strong>${msg.title}</strong></td>
+                            <td>${msg.body.substring(0, 40)}...</td>
+                            <td>${time}</td>
+                            <td>
+                                <button class="btn-sm delete" onclick="window.deleteGlobalMsg('${msg.id}')" title="Delete"><i class="fas fa-trash-alt"></i></button>
+                            </td>
+                        </tr>`;
+            }).join('');
+        }
+
+        window.deleteGlobalMsg = function(id) {
+            showConfirmDialog('Delete Message', 'Remove this message from the cloud? Users will no longer see it.', async function() {
+                try {
+                    await db.collection("messages").doc(id).delete();
+                    logAdminActivity('delete_message', 'Deleted a global message');
+                    showToast('Message deleted', 'success');
+                } catch(e) { showToast('Error deleting', 'error'); }
+            });
+        }
+
+        document.getElementById('announcementForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            const type = document.getElementById('announcementType').value;
+            const text = document.getElementById('announcementText').value.trim();
+            const btn = this.querySelector('.btn-save');
+            btn.innerHTML = '<span class="spinner"></span> Publishing...';
+            try {
+                await db.collection("settings").doc("announcement").set({
+                    text: text, type: type, active: true, timestamp: new Date().toISOString(), sentBy: currentAdmin
+                });
+                logAdminActivity('publish_announcement', `Published announcement`);
+                this.reset();
+                showToast('Announcement Live!', 'success');
+            } catch(e) { showToast('Error publishing', 'error'); }
+            finally { btn.innerHTML = '<i class="fas fa-bullhorn"></i> Publish'; }
+        });
+
+        window.removeAnnouncement = async function() {
+            try {
+                await db.collection("settings").doc("announcement").set({ active: false }, { merge: true });
+                logAdminActivity('remove_announcement', `Removed announcement`);
+                showToast('Announcement removed', 'info');
+            } catch(e) { showToast('Error removing', 'error'); }
+        }
+
+        window.renderActivities = function() {
+            const container = document.getElementById('activitiesTimeline');
+            document.getElementById('activityCountBadge').textContent = globalActivities.length;
+            if (globalActivities.length === 0) {
+                container.innerHTML = '<div class="empty-state"><i class="fas fa-history"></i><p>No activities found</p></div>';
+                return;
+            }
+            container.innerHTML = globalActivities.map(act => {
+                const time = new Date(act.timestamp).toLocaleString();
+                return `<div class="activity-item">
+                            <div class="activity-header"><span class="activity-action">${act.action}</span><span class="activity-time">${time}</span></div>
+                            <div class="activity-details"><strong>${act.userName || 'User'}</strong> - ${act.details || ''}</div>
+                        </div>`;
+            }).join('');
+        }
+
+        window.clearActivities = function() {
+            showConfirmDialog('Clear Log', 'Clearing activity logs must be done manually in Firebase console to prevent accidental deletion of audit trails.', function() {
+                window.closeConfirmDialog();
+            });
+        }
+
         function showConfirmDialog(title, message, callback) {
             document.getElementById('confirmTitle').textContent = title;
             document.getElementById('confirmMessage').textContent = message;
             document.getElementById('confirmDialog').classList.add('show');
             confirmCallback = callback;
-            document.getElementById('confirmDeleteBtn').onclick = () => { if(confirmCallback) confirmCallback(); closeConfirmDialog(); };
+            document.getElementById('confirmDeleteBtn').onclick = () => { if(confirmCallback) confirmCallback(); window.closeConfirmDialog(); };
         }
-        function closeConfirmDialog() { document.getElementById('confirmDialog').classList.remove('show'); confirmCallback = null; }
+        window.closeConfirmDialog = function() { document.getElementById('confirmDialog').classList.remove('show'); confirmCallback = null; }
         
         function showToast(message, type = 'info') {
             const container = document.getElementById('toastContainer');
@@ -1336,16 +1340,40 @@
             setTimeout(() => { if (toast.parentElement) { toast.style.opacity = '0'; setTimeout(() => toast.remove(), 300); } }, 4000);
         }
 
-        // Mobile Toggles
-        document.getElementById('mobileToggle').addEventListener('click', () => {
-            document.getElementById('sidebar').classList.toggle('open');
-            document.getElementById('sidebarBackdrop').classList.toggle('show');
-        });
-        document.getElementById('sidebarBackdrop').addEventListener('click', function() {
-            document.getElementById('sidebar').classList.remove('open');
-            this.classList.remove('show');
-        });
+        window.exportData = function(format) {
+            if (format === 'pdf') {
+                const w = window.open('', '_blank');
+                w.document.write(`<html><head><title>GPA Export</title><style>body{font-family:Arial;padding:20px}table{width:100%;border-collapse:collapse}th,td{border:1px solid #ddd;padding:8px;text-align:left}</style></head><body><h1>GPA Admin Export</h1><h2>Activities</h2><table><tr><th>Action</th><th>User</th><th>Details</th><th>Date</th></tr>${globalActivities.map(a=>`<tr><td>${a.action}</td><td>${a.userName||''}</td><td>${a.details||''}</td><td>${new Date(a.timestamp).toLocaleString()}</td></tr>`).join('')}</table></body></html>`);
+                w.document.close(); setTimeout(() => w.print(), 500);
+            } else {
+                let csv = 'Action,User,Details,Date\n';
+                globalActivities.forEach(a => csv += `"${a.action}","${a.userName||''}","${a.details||''}","${new Date(a.timestamp).toLocaleString()}"\n`);
+                const blob = new Blob([csv], { type: 'text/csv' });
+                const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = `gpa_export.csv`; a.click();
+            }
+            showToast(`Exported!`, 'success');
+        }
 
+        window.exportUsers = function(format) {
+            if (!globalUsers.length) return showToast('No users!', 'warning');
+            if (format === 'excel') {
+                let csv = 'Name,Email,Phone,Department,Level\n';
+                globalUsers.forEach(u => csv += `"${u.fullName||''}","${u.email||''}","${u.phone||''}","${u.department||''}","${u.level||''}"\n`);
+                const blob = new Blob([csv], { type: 'text/csv' });
+                const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = `gpa_users.csv`; a.click();
+            } else {
+                const w = window.open('', '_blank');
+                w.document.write(`<html><head><title>GPA Users</title><style>body{font-family:Arial;padding:20px}table{width:100%;border-collapse:collapse}th,td{border:1px solid #ddd;padding:8px;text-align:left}</style></head><body><h1>GPA Users</h1><table><tr><th>Name</th><th>Email</th><th>Phone</th><th>Department</th></tr>${globalUsers.map(u=>`<tr><td>${u.fullName||''}</td><td>${u.email||''}</td><td>${u.phone||''}</td><td>${u.department||''}</td></tr>`).join('')}</table></body></html>`);
+                w.document.close(); setTimeout(() => w.print(), 500);
+            }
+        }
+
+        window.exportActivities = function(format) { window.exportData(format); }
+
+        document.getElementById('mobileToggle').addEventListener('click', () => { document.getElementById('sidebar').classList.toggle('open'); document.getElementById('sidebarBackdrop').classList.toggle('show'); });
+        document.getElementById('sidebarBackdrop').addEventListener('click', function() { document.getElementById('sidebar').classList.remove('open'); this.classList.remove('show'); });
+        document.querySelectorAll('.modal-overlay').forEach(o => { o.addEventListener('click', function(e) { if (e.target === this) this.classList.remove('show'); }); });
+        document.addEventListener('keydown', function(e) { if (e.key === 'Escape') { document.querySelectorAll('.modal-overlay').forEach(m => m.classList.remove('show')); } });
     </script>
 </body>
 </html>
