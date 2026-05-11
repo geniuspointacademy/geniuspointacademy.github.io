@@ -3728,6 +3728,54 @@
     console.log('🎉 All 15 tutors imported to Firestore!');
 })();
 // ============ END ONE-TIME IMPORT ============
+    // ============ ONE-TIME COURSE IMPORT (Run once, then delete) ============
+(async function importCoursesOnce() {
+    if (localStorage.getItem('gpa_courses_imported_v1') === 'true') return;
+    
+    const courses = [
+        // FIRST SEMESTER
+        {code:"MTH 101",name:"Introductory Mathematics I",level:"100",semester:"first"},
+        {code:"FMTH 103",name:"Elementary Mathematics III",level:"100",semester:"first"},
+        {code:"FCHE 101",name:"General Chemistry I",level:"100",semester:"first"},
+        {code:"PHY 101",name:"General Physics I",level:"100",semester:"first"},
+        {code:"PHY 103",name:"General Physics III",level:"100",semester:"first"},
+        {code:"BIO 101",name:"General Biology I",level:"100",semester:"first"},
+        {code:"MEE 101",name:"Engineering Drawing I",level:"100",semester:"first"},
+        {code:"MTS 201",name:"Mathematical Methods",level:"200",semester:"first"},
+        {code:"EEE 201",name:"Basic Electrical and Electronics Engineering I",level:"200",semester:"first"},
+        {code:"MEE 207",name:"Elementary Mechanics",level:"200",semester:"first"},
+        {code:"MME 201",name:"Science of Materials",level:"200",semester:"first"},
+        {code:"BIO 201",name:"Introduction to Genetics I",level:"200",semester:"first"},
+        {code:"MCB 201",name:"General Microbiology I",level:"200",semester:"first"},
+        {code:"CHE 205",name:"Physical Chemistry I",level:"200",semester:"first"},
+        {code:"EEE 305",name:"Electrical Machines",level:"300",semester:"first"},
+        {code:"EEE 307",name:"Electrical Machines II",level:"300",semester:"first"},
+        {code:"MTS 315",name:"Engineering Mathematics I",level:"300",semester:"first"},
+        {code:"EEE 401",name:"Advanced Electrical Engineering I",level:"400",semester:"first"},
+        {code:"EEE 403",name:"Advanced Electrical Engineering III",level:"400",semester:"first"},
+        // SECOND SEMESTER
+        {code:"MTH 102",name:"Introductory Mathematics II",level:"100",semester:"second"},
+        {code:"MTS 104",name:"Introductory Applied Mathematics",level:"100",semester:"second"},
+        {code:"PHY 102",name:"Basic General Physics II",level:"100",semester:"second"},
+        {code:"BIO 102",name:"General Biology II",level:"100",semester:"second"},
+        {code:"CHE 102",name:"General Chemistry II",level:"100",semester:"second"},
+        {code:"CHM 102",name:"Chemistry II",level:"100",semester:"second"},
+        {code:"MTS 202",name:"Numerical Analysis",level:"200",semester:"second"},
+        {code:"CVE 202",name:"Strength of Materials",level:"200",semester:"second"},
+        {code:"MEE 206",name:"Engineering Thermodynamics",level:"200",semester:"second"},
+        {code:"EEE 202",name:"Basic Electricity II",level:"200",semester:"second"},
+        {code:"MTS 316",name:"Engineering Mathematics II",level:"300",semester:"second"},
+        {code:"EEE 302",name:"Electronics Engineering II",level:"300",semester:"second"}
+    ];
+    
+    for (const c of courses) {
+        await addDoc(collection(db, "courses"), c);
+        console.log('✅ Course:', c.code, '-', c.semester);
+    }
+    localStorage.setItem('gpa_courses_imported_v1', 'true');
+    console.log('🎉 All 32 courses imported!');
+})();
+// ============ END ONE-TIME COURSE IMPORT ============
 
         // ============ GLOBAL STATE ============
        let currentUser = null;
