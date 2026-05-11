@@ -931,25 +931,44 @@
             document.getElementById('tutorModal').classList.remove('show'); 
         }
 
-        async function saveTutor() {
+             async function saveTutor() {
             const form = document.getElementById('tutorForm');
             if (!form.checkValidity()) { form.reportValidity(); return; }
 
             const id = document.getElementById('tutorEditId').value;
             const coursesRaw = document.getElementById('tutorCourses').value;
+            const semester = document.getElementById('tutorSemester').value;
+            const nickname = document.getElementById('tutorNickname').value.trim();
+            
+            // CHECK FOR DUPLICATE (only when adding new, not editing)
+            if (!id) {
+                const existing = globalTutors.filter(t => 
+                    t.nickname.toLowerCase() === nickname.toLowerCase() && 
+                    t.semester === semester
+                );
+                if (existing.length > 0) {
+                    return showToast(`Tutor "${nickname}" already exists for ${semester} semester! Edit it instead.`, 'warning');
+                }
+            }
+            
             const data = {
-                nickname: document.getElementById('tutorNickname').value.trim(),
+                nickname: nickname,
                 fullName: document.getElementById('tutorFullName').value.trim(),
                 department: document.getElementById('tutorDepartment').value.trim(),
                 level: document.getElementById('tutorLevel').value,
                 price: document.getElementById('tutorPrice').value,
-                semester: document.getElementById('tutorSemester').value,
+                semester: semester,
                 courses: coursesRaw ? coursesRaw.split(',').map(c=>c.trim()).filter(c=>c) : [],
                 email: document.getElementById('tutorEmail').value.trim(),
                 whatsapp: document.getElementById('tutorWhatsApp').value.trim(),
                 imageUrl: document.getElementById('tImg').value.trim(),
                 bio: document.getElementById('tutorBio').value.trim()
             };
+            
+            const saveBtn = document.querySelector('#tutorModal .btn-save');
+            const originalText = saveBtn.innerHTML;
+            saveBtn.innerHTML = '<span class="spinner"></span> Saving...';
+            saveBtn.disabled = true;
             
             try {
                 if (id) {
@@ -964,6 +983,9 @@
             } catch(e) { 
                 console.error("Save tutor error:", e);
                 showToast("Error saving: " + e.message, "error"); 
+            } finally {
+                saveBtn.innerHTML = originalText;
+                saveBtn.disabled = false;
             }
         }
 
