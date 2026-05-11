@@ -573,10 +573,14 @@
                 console.error("Courses listener error:", error);
             });
 
-            // Tutors listener
+                       // Tutors listener
             db.collection("tutors").onSnapshot((snapshot) => {
                 globalTutors = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
-                if(document.getElementById('page-tutors').classList.contains('active')) renderTutors();
+                console.log('📊 Tutors loaded from Firestore:', globalTutors.length);
+                // Always update the UI when tutors data changes
+                if (document.getElementById('page-tutors') && document.getElementById('page-tutors').classList.contains('active')) {
+                    renderTutors();
+                }
                 updateDashboardStats();
             }, (error) => {
                 console.error("Tutors listener error:", error);
