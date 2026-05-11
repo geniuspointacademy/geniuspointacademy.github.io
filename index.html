@@ -3702,6 +3702,7 @@
         const db = getFirestore(app);
     // ============ ONE-TIME TUTOR IMPORT (Auto-runs once, then deactivates) ============
 (async function importTutorsOnce() {
+    return; // IMPORT ALREADY DONE - DISABLED
     if (localStorage.getItem('gpa_tutors_imported_v2') === 'true') return;
     const tutors = [
         {nickname:"E-Simple",fullName:"Amusan Emmanuel Oluwapelumi",department:"Electrical & Electronics Engineering",level:"400",price:"2000",semester:"first",email:"emmanuelamusan732@gmail.com",whatsapp:"08109807833",imageUrl:"e-simple.png",bio:"Passionate STEM tutor with 8+ years experience in core engineering and mathematics. Specializes in breaking down complex concepts and helping students achieve academic excellence with practical understanding.",courses:["MTH 101","PHY 101","PHY 103","FCHE 101","MTS 201","EEE 201","MTS 315","EEE 305","EEE 307","EEE 401","EEE 403"]},
