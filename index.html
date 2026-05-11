@@ -3702,8 +3702,7 @@
         const db = getFirestore(app);
     // ============ ONE-TIME TUTOR IMPORT (Auto-runs once, then deactivates) ============
 (async function importTutorsOnce() {
-    
-    if (localStorage.getItem('gpa_tutors_imported_v2') === 'true') return;
+    if (localStorage.getItem('gpa_tutors_imported_v3') === 'true') return;
     const tutors = [
         {nickname:"E-Simple",fullName:"Amusan Emmanuel Oluwapelumi",department:"Electrical & Electronics Engineering",level:"400",price:"2000",semester:"first",email:"emmanuelamusan732@gmail.com",whatsapp:"08109807833",imageUrl:"e-simple.png",bio:"Passionate STEM tutor with 8+ years experience in core engineering and mathematics. Specializes in breaking down complex concepts and helping students achieve academic excellence with practical understanding.",courses:["MTH 101","PHY 101","PHY 103","FCHE 101","MTS 201","EEE 201","MTS 315","EEE 305","EEE 307","EEE 401","EEE 403"]},
         {nickname:"Muzzle",fullName:"Folorunsho Muhammed Alamu",department:"Mechanical Engineering",level:"400",price:"1800",semester:"first",email:"folorunshomuhammed9090@gmail.com",whatsapp:"08127064566",imageUrl:"muzzle.jpg",bio:"Experienced educator and founder of Impact Coaching Academy with over 7 years in teaching core engineering and advanced mathematics subjects.",courses:["MTH 101","PHY 101","PHY 103","MTS 201","MTS 315","MEE 207"]},
@@ -3725,7 +3724,7 @@
         await addDoc(collection(db, "tutors"), t);
         console.log('✅ Imported:', t.nickname, '-', t.semester);
     }
-    localStorage.setItem('gpa_tutors_imported_v2', 'true');
+        localStorage.setItem('gpa_tutors_imported_v3', 'true');
     console.log('🎉 All 15 tutors imported to Firestore!');
 })();
 // ============ END ONE-TIME IMPORT ============
