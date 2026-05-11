@@ -4487,8 +4487,7 @@ function buildTutorCardsFromFirestore() {
     secondSemGrid.innerHTML = '';
     
     if (globalTutors.length === 0) {
-        firstSemGrid.innerHTML = '<p style="text-align:center;padding:40px;color:#888;">No tutors added yet. Check back soon!</p>';
-        secondSemGrid.innerHTML = '<p style="text-align:center;padding:40px;color:#888;">No tutors added yet. Check back soon!</p>';
+        // Keep hardcoded tutors — don't touch anything
         return;
     }
     
@@ -4537,7 +4536,15 @@ function buildCourseCardsFromFirestore() {
     const firstSemContainer = document.getElementById('courseSemFirst');
     const secondSemContainer = document.getElementById('courseSemSecond');
     
-    if (!firstSemContainer || !secondSemContainer) return;
+     if (!firstSemContainer || !secondSemContainer) return;
+    
+    // If Firestore has no courses, keep the hardcoded ones
+    let hasCourses = false;
+    ['100','200','300','400','500'].forEach(l => {
+        if ((coursesDataFirst[l] || []).length > 0) hasCourses = true;
+        if ((coursesDataSecond[l] || []).length > 0) hasCourses = true;
+    });
+    if (!hasCourses) return;
     
     firstSemContainer.innerHTML = '';
     secondSemContainer.innerHTML = '';
