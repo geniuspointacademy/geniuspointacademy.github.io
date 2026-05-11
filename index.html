@@ -4360,12 +4360,17 @@
         const db = getFirestore(app);
 
         // ============ GLOBAL STATE ============
-        let currentUser = null;
-        let messages = [];
-        let unreadCount = 0;
-        let currentMessageView = 'list';
-        let currentDetailMessage = null;
-        let messageTabFilter = 'all';
+       let currentUser = null;
+let messages = [];
+let unreadCount = 0;
+let currentMessageView = 'list';
+let currentDetailMessage = null;
+let messageTabFilter = 'all';
+let globalTutors = [];  
+let coursesLoaded = false; 
+let tutorsLoaded = false; 
+    let coursesDataFirst = { '100': [], '200': [], '300': [], '400': [], '500': [] };
+let coursesDataSecond = { '100': [], '200': [], '300': [], '400': [], '500': [] };
 
         // ============ FIREBASE AUTHENTICATION LISTENER ============
         onAuthStateChanged(auth, async (user) => {
@@ -4399,14 +4404,193 @@
             }
         });
 
-        // ============ INITIALIZATION ============
-        document.addEventListener('DOMContentLoaded', function() {
-            loadAnnouncement();
-            updateAuthUI();
-            
-            // Note: Messages and User Session are now handled by Firebase Listeners above!
-        });
+// ============ INITIALIZATION ============
+document.addEventListener('DOMContentLoaded', function() {
+    loadAnnouncement();
+    updateAuthUI();
 
+    // ============ LOAD COURSES & TUTORS FROM FIRESTORE ============
+    onSnapshot(query(collection(db, "courses")), (snapshot) => {
+        ['100', '200', '300', '400', '500'].forEach(level => {
+            coursesDataFirst[level] = [];
+            coursesDataSecond[level] = [];
+        });
+        
+        snapshot.forEach((doc) => {
+            const course = doc.data();
+            const target = course.semester === 'first' ? coursesDataFirst : coursesDataSecond;
+            if (target[course.level]) {
+                target[course.level].push({ 
+                    code: course.code, 
+                    name: course.name, 
+                    tutors: [],
+                    id: doc.id 
+                });
+            }
+        });
+        
+                coursesLoaded = true;
+        if (tutorsLoaded) {
+            matchTutorsToCourses();
+            buildCourseCardsFromFirestore();
+            updateBookingCourses();
+        }
+    });
+
+    onSnapshot(query(collection(db, "tutors")), (snapshot) => {
+        globalTutors = [];
+        snapshot.forEach((doc) => {
+            globalTutors.push({ id: doc.id, ...doc.data() });
+        });
+        
+        buildTutorCardsFromFirestore();
+        
+        tutorsLoaded = true;
+       if (coursesLoaded) {
+            matchTutorsToCourses();
+            buildCourseCardsFromFirestore();
+            updateBookingCourses();
+        }
+    });
+});
+
+
+
+function matchTutorsToCourses() {
+    globalTutors.forEach(tutor => {
+        if (tutor.courses) {
+            tutor.courses.forEach(courseCode => {
+                const allSemesters = tutor.semester === 'both' 
+                    ? [coursesDataFirst, coursesDataSecond] 
+                    : (tutor.semester === 'first' ? [coursesDataFirst] : [coursesDataSecond]);
+                allSemesters.forEach(sem => {
+                    Object.keys(sem).forEach(level => {
+                        sem[level].forEach(course => {
+                            if (course.code === courseCode && !course.tutors.includes(`${tutor.nickname} (₦${tutor.price})`)) {
+                                course.tutors.push(`${tutor.nickname} (₦${tutor.price})`);
+                            }
+                        });
+                    });
+                });
+            });
+        }
+    });
+}
+
+function buildTutorCardsFromFirestore() {
+    const firstSemGrid = document.getElementById('tutorSemFirst').querySelector('.tutors-grid');
+    const secondSemGrid = document.getElementById('tutorSemSecond').querySelector('.tutors-grid');
+    
+    if (!firstSemGrid || !secondSemGrid) return;
+    
+    firstSemGrid.innerHTML = '';
+    secondSemGrid.innerHTML = '';
+    
+    if (globalTutors.length === 0) {
+        firstSemGrid.innerHTML = '<p style="text-align:center;padding:40px;color:#888;">No tutors added yet. Check back soon!</p>';
+        secondSemGrid.innerHTML = '<p style="text-align:center;padding:40px;color:#888;">No tutors added yet. Check back soon!</p>';
+        return;
+    }
+    
+    globalTutors.forEach(tutor => {
+        const card = createTutorCard(tutor);
+        if (tutor.semester === 'first' || tutor.semester === 'both') {
+            firstSemGrid.innerHTML += card;
+        }
+        if (tutor.semester === 'second' || tutor.semester === 'both') {
+            secondSemGrid.innerHTML += card;
+        }
+    });
+}
+
+function createTutorCard(tutor) {
+    const courses = tutor.courses ? tutor.courses.map(c => `<span class="course-tag">${c}</span>`).join('') : '';
+    const semesterLabel = tutor.semester === 'both' 
+        ? '<span class="semester-label first">1st Sem</span> <span class="semester-label second">2nd Sem</span>'
+        : `<span class="semester-label ${tutor.semester}">${tutor.semester === 'first' ? '1st Semester' : '2nd Semester'}</span>`;
+    
+    return `
+        <div class="tutor-card">
+            <div class="tutor-img">
+                <img src="${tutor.imageUrl || ''}" alt="${tutor.nickname}" onerror="this.style.display='none'; this.parentElement.innerHTML='<i class=\\'fas fa-user-graduate\\' style=\\'font-size:4rem;opacity:0.8;\\'></i>';">
+            </div>
+            <div class="tutor-info">
+                <h3>${tutor.nickname}</h3>
+                <div class="full-name">${tutor.fullName}</div>
+                <div class="tutor-level-dept">${tutor.level}L | ${tutor.department}</div>
+                <div class="tutor-level-dept">Personal Tutorial: ₦${tutor.price}/session</div>
+                <p>${tutor.bio || ''}</p>
+                <div class="tutor-contact">
+                    ${tutor.email ? `<div class="contact-item"><i class="fas fa-envelope"></i><span>${tutor.email}</span></div>` : ''}
+                    ${tutor.whatsapp ? `<div class="contact-item"><i class="fab fa-whatsapp"></i><span>${tutor.whatsapp}</span></div>` : ''}
+                </div>
+                <div class="courses-list">
+                    ${semesterLabel}
+                    ${courses}
+                </div>
+            </div>
+        </div>
+    `;
+}
+
+function buildCourseCardsFromFirestore() {
+    const firstSemContainer = document.getElementById('courseSemFirst');
+    const secondSemContainer = document.getElementById('courseSemSecond');
+    
+    if (!firstSemContainer || !secondSemContainer) return;
+    
+    firstSemContainer.innerHTML = '';
+    secondSemContainer.innerHTML = '';
+    
+    const levelTabs = ['100', '200', '300', '400', '500'];
+    
+    levelTabs.forEach(level => {
+        const firstLevelDiv = document.createElement('div');
+        firstLevelDiv.className = 'courses-content';
+        firstLevelDiv.id = `level-${level}-first`;
+        if (level === '100') firstLevelDiv.classList.add('active');
+        
+        const firstCourses = coursesDataFirst[level] || [];
+        if (firstCourses.length === 0) {
+            firstLevelDiv.innerHTML = '<p style="text-align:center;padding:40px;color:#888;"><i class="fas fa-info-circle"></i> No courses for this level yet.</p>';
+        } else {
+            firstLevelDiv.innerHTML = firstCourses.map(course => {
+                const tutorTags = course.tutors.length > 0 
+                    ? course.tutors.map(t => `<span class="tutor-tag">${t}</span>`).join('')
+                    : '<p class="no-tutors">No tutors currently available</p>';
+                return `
+                    <div class="course-card">
+                        <h3>${course.code} <span>${course.name}</span> <span class="semester-badge-mini first-sem">1st Sem</span></h3>
+                        <div class="tutors-list">${tutorTags}</div>
+                    </div>
+                `;
+            }).join('');
+        }
+        firstSemContainer.appendChild(firstLevelDiv);
+        
+        const secondLevelDiv = document.createElement('div');
+        secondLevelDiv.className = 'courses-content';
+        secondLevelDiv.id = `level-${level}-second`;
+        
+        const secondCourses = coursesDataSecond[level] || [];
+        if (secondCourses.length === 0) {
+            secondLevelDiv.innerHTML = '<p style="text-align:center;padding:40px;color:#888;"><i class="fas fa-info-circle"></i> No courses for this level yet.</p>';
+        } else {
+            secondLevelDiv.innerHTML = secondCourses.map(course => {
+                const tutorTags = course.tutors.length > 0 
+                    ? course.tutors.map(t => `<span class="tutor-tag">${t}</span>`).join('')
+                    : '<p class="no-tutors">No tutors currently available</p>';
+                return `
+                    <div class="course-card">
+                        <h3>${course.code} <span>${course.name}</span> <span class="semester-badge-mini second-sem">2nd Sem</span></h3>
+                        <div class="tutors-list">${tutorTags}</div>
+                    </div>
+                `;
+            }).join('');
+        }
+        secondSemContainer.appendChild(secondLevelDiv);
+    });
+}
         // ============ LOG ACTIVITY TO FIREBASE ============
         async function logActivity(action, name, email, details = '') {
             try {
@@ -4904,14 +5088,30 @@
             return date.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
         }
 
-        // ============ ANNOUNCEMENT BAR ============
-        function loadAnnouncement() {
-            // In a real app, this should also fetch from Firestore. Keeping localStorage for simplicity for now.
-            const announcement = JSON.parse(localStorage.getItem('gpa_announcement') || 'null');
-            if (announcement && announcement.active) {
-                showAnnouncementBar(announcement);
+       // ============ ANNOUNCEMENT BAR ============
+function loadAnnouncement() {
+    // If this user already dismissed it this session, don't show it
+    if (sessionStorage.getItem('hideGpaAnnouncement') === 'true') return;
+
+    onSnapshot(doc(db, "settings", "announcement"), (docSnap) => {
+        if (docSnap.exists()) {
+            const data = docSnap.data();
+            if (data.active) {
+                showAnnouncementBar(data);
+            } else {
+                hideAnnouncementBar();
             }
+        } else {
+            hideAnnouncementBar();
         }
+    });
+}
+
+function hideAnnouncementBar() {
+    const bar = document.getElementById('announcementBar');
+    bar.classList.remove('show');
+    document.body.classList.remove('has-announcement');
+}
 
         function showAnnouncementBar(announcement) {
             const bar = document.getElementById('announcementBar');
@@ -4926,20 +5126,17 @@
             document.body.classList.add('has-announcement');
         }
 
-        document.getElementById('announcementClose').addEventListener('click', function() {
-            const bar = document.getElementById('announcementBar');
-            bar.classList.remove('show');
-            document.body.classList.remove('has-announcement');
-            const announcement = JSON.parse(localStorage.getItem('gpa_announcement') || 'null');
-            if (announcement) {
-                announcement.active = false;
-                localStorage.setItem('gpa_announcement', JSON.stringify(announcement));
-            }
-        });
+     document.getElementById('announcementClose').addEventListener('click', function() {
+    const bar = document.getElementById('announcementBar');
+    bar.classList.remove('show');
+    document.body.classList.remove('has-announcement');
+    
+    // Remember that THIS user closed it — don't affect other visitors
+    sessionStorage.setItem('hideGpaAnnouncement', 'true');
+});
 
         // ============ COURSE DATA & TOGGLES ============
-        // (Keeping all your existing beautiful course data exactly the same!)
-        const coursesDataFirst = {
+       /* const coursesDataFirst = {
             '100': [
                 { code: 'MTH 101', name: 'Introductory Mathematics I', tutors: ['Muzzle (₦1,800)', 'O\'yemi (₦1,500)', 'Absamie (₦1,700)', 'E-Simple (₦2,000)', 'Tomi (₦1,500)'] },
                 { code: 'FMTH 103', name: 'Elementary Mathematics III', tutors: ['Absamie (₦1,700)', 'Tomi (₦1,500)'] },
@@ -4993,7 +5190,7 @@
             ],
             '400': [],
             '500': []
-        };
+        };*/
 
         function getActiveCourseData() {
             const firstSemActive = document.getElementById('courseSemFirstBtn').classList.contains('active');
