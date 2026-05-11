@@ -5587,5 +5587,52 @@ function hideAnnouncementBar() {
 
         console.log('🚀 Genius Point Academy - Firebase Initialized Successfully');
     </script>
+    <!-- Back to Top Button -->
+    <button id="backToTopBtn" title="Back to Top" style="
+        display: none;
+        position: fixed;
+        bottom: 90px;
+        left: 20px;
+        z-index: 999;
+        width: 45px;
+        height: 45px;
+        border-radius: 50%;
+        background: var(--primary);
+        color: white;
+        border: none;
+        cursor: pointer;
+        font-size: 1.2rem;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        transition: all 0.3s ease;
+    "><i class="fas fa-arrow-up"></i></button>
+
+    <script>
+        // Back to Top Button
+        const backToTopBtn = document.getElementById('backToTopBtn');
+        
+        window.addEventListener('scroll', function() {
+            if (window.scrollY > 500) {
+                backToTopBtn.style.display = 'block';
+            } else {
+                backToTopBtn.style.display = 'none';
+            }
+        });
+        
+        backToTopBtn.addEventListener('click', function() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+        
+        backToTopBtn.addEventListener('mouseenter', function() {
+            this.style.transform = 'translateY(-5px)';
+            this.style.background = 'var(--secondary)';
+            this.style.color = 'var(--dark)';
+        });
+        
+        backToTopBtn.addEventListener('mouseleave', function() {
+            this.style.transform = 'translateY(0)';
+            this.style.background = 'var(--primary)';
+            this.style.color = 'white';
+        });
+    </script>
 </body>
 </html>
